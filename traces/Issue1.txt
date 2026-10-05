@@ -1,0 +1,72 @@
+# ADVAR Frontend/Backend Issue Tracker
+
+## 001 — Hydration mismatch: theme toggle icon
+Status: FIXED (patch applied)
+File: frontend/src/hooks/use-theme.ts, frontend/src/components/layout/theme-toggle.tsx
+Cause: isDark computed via window.matchMedia() directly during render; client's first render
+  pass already has `window` while server's doesn't, so React's hydration check failed.
+Fix: defer theme value until after mount; read the already-applied .dark class via useEffect
+  instead of recomputing matchMedia during render.
+
+## 002 — Hydration mismatch: nested <li> in report "All reasons" section
+Status: FIXED (patch applied)
+File: frontend/src/components/report/evidence-popover.tsx, frontend/src/app/[locale]/(app)/tests/[id]/report/page.tsx
+Cause: ReasonLine renders its own root <li>, but the "All reasons" section wrapped it in
+  ANOTHER <li> (to show a section badge alongside it) — <li> inside <li> is invalid HTML.
+Fix: split ReasonLine into ReasonContent (no wrapper) + ReasonLine (wraps ReasonContent in <li>);
+  the "All reasons" section now uses ReasonContent directly inside its own <li>.
+
+## 003 — Report funnel numbers unreadable to non-technical users
+Status: FIXED (patch applied)
+File: frontend/src/components/report/sections.tsx (FunnelWithReasons), frontend/messages/en.json
+Cause: each funnel row led with the raw simulated count (meaningless to a business owner),
+  crammed real-world estimate + percent onto one line with "·" separators, and showed a
+  trivial "100%" on the very first step (always true, no information).
+Fix: real-world people estimate is now the big primary number; raw simulated count moved to
+  a small caveat line; first step no longer shows the meaningless 100%; added plain-language
+  copy ("62% of everyone who saw your ad" instead of a bare "· 62%").
+
+## 004 — Backend storage fix reverted (LocalStorage presigned_url broken again)
+Status: FIXED (patches applied)
+Files: backend/app/routers/local_files.py (recreated), backend/app/services/storage.py
+  (LocalStorage.presigned_url), backend/app/main.py (import + include_router),
+  backend/app/config.py (API_BASE_URL setting)
+Cause: unknown — likely backend folder got re-extracted from the original zip at some point,
+  silently reverting earlier fixes (MinIO removal / local storage support).
+Fix: reapplied all four pieces. Confirmed cascade: LocalStorage.put()/.get() were never broken
+  (engine reads bytes directly, bypassing presigned_url) — only the DOWNLOAD LINK generation
+  was broken, so images were always safely stored/read internally; only their display URL failed.
+Follow-up: still needs a full recheck for any OTHER reverted pieces we haven't hit yet.
+
+## 005 — Ad preview image not rendering in wizard
+Status: LIKELY FIXED BY #004, NOT YET CONFIRMED
+File: frontend/src/components/preview/media-box.tsx
+Cause: <img src={media.url}> where media.url comes straight from the broken presigned_url
+  (see #004) — pointed at a dead localhost:9000, so the browser silently failed to load it.
+Next: confirm the image now displays after backend fix #004 is applied + retested.
+
+## 006 — ProfileCard doesn't use the tests_count/last_used_at backend fields
+Status: NOT FIXED
+File: frontend/src/components/profile/profile-card.tsx
+Cause: backend was patched to return tests_count + last_used_at on GET /profiles (see earlier
+  backend patch), and the generated api-types.ts has the fields, but ProfileCard never reads
+  them — instead it fires an extra GET /profiles/{id}/versions request per card and derives
+  "last used" from the current version's created_at (wrong: that's version-creation time, not
+  actual last-test time) and "tests" count from that same versions response.
+Fix needed: rewrite ProfileCard to read profile.tests_count and profile.last_used_at directly,
+  drop the extra per-card versions fetch entirely.
+
+## 007 — Score band label vs confidence label look like the same metric
+Status: NEEDS SCREENSHOT — awaiting more info
+File: likely frontend/src/app/[locale]/(app)/tests/[id]/live/page.tsx and/or report page
+Cause: ScoreBadge shows "55 · Medium" where "Medium" = the score's position on a 0–100 scale
+  (low/medium/high). Separately, "Confidence: good" describes how many simulation runs
+  completed vs. the tier's target — internally called "medium" confidence, displayed as "good".
+  Two unrelated metrics, worded closely enough to look like one contradictory rating.
+Fix needed: clearer, more separated wording once we see the actual screen layout.
+
+## 008 — Dev server slow first-navigation to each page
+Status: NOT A BUG — informational only
+Cause: `next dev`'s on-demand compilation per route; normal behavior, disappears entirely
+  under a production build (`npm run build && npm run start`).
+No fix needed.

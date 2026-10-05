@@ -1,0 +1,49 @@
+**Issue 5: Score Colours, Report Overview Rework & Admin Filter Alignment**
+
+**Frontend**
+
+1. **Score colour bands match the new engine scale.** The engine now treats 50 as an average ad, with real scores between about 22 and 75. The old bands (under 40 red, 40–69 yellow, 70 and up green) were wrong for that. `scoreBand` in `lib/format.ts` now returns five bands:
+
+   | Score | Band | Colour |
+   |---|---|---|
+   | under 30 | Weak | red |
+   | 30–44 | Below average | amber |
+   | 45–59 | Average | grey (badge) / amber (report text) |
+   | 60–69 | Good | green |
+   | 70 and up | Strong | green |
+
+2. **One colour rule for the whole app.** `score-badge.tsx` (`BAND_CLASS`) and the report page's `scoreTone` both use `scoreBand`. The report page had its own copy of the old thresholds, and that copy is gone. The five labels (`weak`, `below`, `average`, `good`, `strong`) were added to the `"score"` section of `messages/en.json`. Other language files still need the same five keys.
+
+3. **Overview tab rebuilt for owners.** The new `components/report/overview.tsx` (`OverviewPanel`) shows:
+   - a verdict, based on the score band
+   - the expected result for the test's goal, as a range of people
+   - "Out of every 100 people who saw your ad": how many stopped, clicked and bought or messaged, plus the most common reason clickers didn't convert
+   - the top three reasons in plain text, with no "Why?" links
+
+   It uses only data the report already returns, so there is no backend change yet. The new text is under `report.overview` in `en.json`.
+
+4. **Old Overview moved to a Statistics tab.** The funnel, ad image and caption, and buyers sub-tabs now live under a new `Statistics` tab (`report.tabs.stats`). The report header lost its two reason lines and the goal-result line, since the Overview shows both. Unused variables (`generalReasons`, `headlinePeople`, `headlineText`) were removed.
+
+5. **Method note hidden** in the Details tab. It sits behind a `SHOW_METHOD = false` constant in `report/page.tsx`, so one change brings it back. The admin-only AI cost line is inside it, so it is hidden too.
+
+6. **Admin payments filter row alignment.** The status select didn't sit on the same bottom line as the search box, because `FormField` added extra space under each field. The row now uses plain label-over-control blocks with `items-end`. If it is still a few pixels off, the cause is different heights on the Input and the SelectTrigger.
+
+7. **`.gitignore` created** at the project root. It ignores `.env`, `backend/.env`, `frontend/.env` and `frontend/.env.local`, and keeps `.env.example` files tracked. It also ignores `node_modules`, `.next`, Python caches and the `backend.bak*` backups.
+
+**Backend:** no change in this issue.
+
+**Found, not fixed yet**
+
+- The "Why it scored this way" sentences still come from `evidence.py` and read like analyst notes (stop rate, P50, benchmark). The Overview will read well only after those statements are rewritten in plain language. This is the next backend step.
+- `BANNED_WORDS` blocks advice words (should, improve, change, add, try). A "what to fix first" line needs a decision on that rule.
+- The Statistics tab, the Audience, Feedback and Timing tabs, and the Why dialog still show raw labels like `stop_rate_by_exposure` and many percentages. They need the plain-language pass.
+- Other admin pages may have the same `FormField` alignment problem in their filter rows.
+- Other language files need the new `score` and `report.overview` keys.
+
+**To do next, in order**
+
+1. Check the Overview with a real report open (scores around 30, 50 and 70), and confirm the three colours.
+2. Rewrite the `evidence.py` statements in plain language.
+3. Add a "what to fix first" line, once the `BANNED_WORDS` rule is decided.
+4. Plain-language pass on the Statistics, Audience, Feedback and Timing tabs, with technical terms moved into Details.
+5. Add the new keys to the other language files.

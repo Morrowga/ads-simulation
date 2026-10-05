@@ -1,0 +1,6 @@
+pytest==8.3.5
+pytest-asyncio==0.26.0
+pytest-timeout==2.3.1
+fakeredis==2.28.1
+ruff==0.11.8
+psycopg[binary]==3.2.7

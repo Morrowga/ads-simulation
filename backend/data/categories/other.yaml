@@ -1,0 +1,99 @@
+# Generic "other" category template. Published as version 2 by scripts/seed.py.
+code: other
+name: Other business
+parent_code: null
+tags: [services, other]
+version: 2
+change_note: "Reorder basics under price level; customer_mix multiselect; add mixed/global language option"
+questions:
+  - { key: business_name, label: "Business name", type: text, required: true }
+  - { key: what_you_sell, label: "What do you sell or offer? (short description)", type: text, required: true }
+  - key: business_kind
+    label: "Kind of business"
+    type: select
+    required: true
+    options: [service, product, event, education, real_estate, travel, health, entertainment, other]
+  - key: price_level
+    label: "Price level"
+    type: select
+    required: true
+    options: [budget, mid, premium]
+    feeds_trait: price_level
+  - key: appeal_profile
+    label: "What the offer appeals to"
+    type: sliders
+    required: true
+    options: [practical, emotional, status, fun]
+    min: 0
+    max: 1
+    default: { practical: 0.5, emotional: 0.4, status: 0.3, fun: 0.4 }
+    feeds_trait: taste
+    help: "0 = none, 1 = very strong"
+  - key: customer_mix
+    label: "Who are your customers?"
+    type: multiselect
+    required: true
+    options: [existing_customers_mostly, mixed, new_market]
+    feeds_trait: familiarity
+    help: "Your actual, existing customers today (not who you want this ad to reach). Pick all that apply."
+  - key: customer_languages
+    label: "Languages your customers use"
+    type: multiselect
+    required: false
+    options: [th, en, my, zh, ja, ko, es, mixed]
+    feeds_trait: language_group
+    help: "The languages your existing customers speak today (not the ad's target audience). Pick 'Mixed' if you get a broad international mix."
+  - { key: followers, label: "Followers on your page (this platform)", type: number, required: true, min: 0, max: 50000000, default: 0, feeds_trait: brand_relationship, help: "Your current follower count on the platform you're testing on, e.g. Facebook/Instagram page followers." }
+  - { key: review_count, label: "Number of public reviews", type: number, required: false, min: 0, max: 1000000, default: 0, feeds_trait: brand_relationship }
+  - { key: rating, label: "Average rating (1-5)", type: number, required: false, min: 1, max: 5, feeds_trait: brand_relationship }
+  - { key: months_in_business, label: "Months in business", type: number, required: false, min: 0, max: 1200, default: 0, feeds_trait: brand_relationship }
+trait_dimensions:
+  - key: taste
+    label: "Appeal preference"
+    kind: vector
+    values: [practical, emotional, status, fun]
+    default_distribution:
+      practical: { mean: 0.55, sd: 0.2 }
+      emotional: { mean: 0.5, sd: 0.2 }
+      status: { mean: 0.4, sd: 0.22 }
+      fun: { mean: 0.5, sd: 0.22 }
+    familiarity_shift: { grew_up_with_it: 0.05, tried_elsewhere: 0.0, foreigner_likes_it: 0.0, never_tried: -0.1 }
+  - key: familiarity
+    label: "Familiarity with the offer"
+    kind: categorical
+    values: [grew_up_with_it, tried_elsewhere, foreigner_likes_it, never_tried]
+    from_question: customer_mix
+  - key: brand_relationship
+    label: "Brand relationship"
+    kind: reputation
+    values: [unaware, aware_not_tried, tried_liked, tried_disliked, regular]
+activation_rules:
+  - { ad_feature: "price_shown", trait: "price_sensitivity", weight: 0.6 }
+  - { ad_feature: "trust_signals", trait: "skepticism", weight: 0.7 }
+  - { ad_feature: "hook_strength", trait: "patience", weight: 0.9 }
+default_mixes:
+  existing_customers_mostly: { grew_up_with_it: 0.6, tried_elsewhere: 0.3, foreigner_likes_it: 0.05, never_tried: 0.05 }
+  mixed: { grew_up_with_it: 0.4, tried_elsewhere: 0.3, foreigner_likes_it: 0.1, never_tried: 0.2 }
+  new_market: { grew_up_with_it: 0.2, tried_elsewhere: 0.3, foreigner_likes_it: 0.1, never_tried: 0.4 }
+buying_behavior: { impulse_share: 0.4, planned_share: 0.6, repeat_rate: 0.3, price_sensitivity: 0.6, decision_time_h: 24, typical_basket_usd: 20 }
+blockers:
+  - { code: relevance, label: "Not relevant to me", weight: 0.3 }
+  - { code: trust, label: "Not convinced", weight: 0.25 }
+  - { code: price, label: "Price", weight: 0.25 }
+  - { code: shipping, label: "Location / logistics", weight: 0.15 }
+  - { code: size, label: "Details unclear", weight: 0.05 }
+trust_signals:
+  - { code: reviews, label: "Reviews visible", weight: 0.85 }
+  - { code: price_shown, label: "Price shown", weight: 0.6 }
+  - { code: location_shown, label: "Location shown", weight: 0.5 }
+  - { code: phone_number, label: "Contact visible", weight: 0.5 }
+comment_topics: [price, product_detail, service, positive, negative, other]
+typical_goals: [awareness, messages, traffic, engagement, sales]
+analyzer_hints:
+  look_for: [main offer, price, contact, location, people, text overlay]
+  taste_dimensions: [practical, emotional, status, fun]
+  interest_tags: [services]
+benchmark_adjustments: {}
+calendar: {}
+restrictions: {}
+country_overrides: {}

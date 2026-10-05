@@ -1,0 +1,70 @@
+"""All SQLAlchemy models (imported here so Alembic and the app see the full metadata)."""
+
+from app.models.base import Base
+from app.models.category import BusinessProfile, CategoryTemplate, ProfileVersion
+from app.models.payment import AuditLog, LLMUsage, Payment, StripeEvent
+from app.models.settings_tables import (
+    Country,
+    CountryVersion,
+    FxRate,
+    Platform,
+    PlatformSettings,
+    Price,
+    Scenario,
+    Setting,
+    Tier,
+    WeightSet,
+)
+from app.models.test import (
+    GOALS,
+    PIPELINE_STAGES,
+    POST_TYPES,
+    TEST_STATUSES,
+    AdAnalysis,
+    AdAsset,
+    AdTest,
+    Archetype,
+    ArchetypeReaction,
+    CalibrationResult,
+    Report,
+    RunResult,
+)
+from app.models.user import EmailToken, OAuthAccount, RefreshToken, TrialGrant, User
+
+__all__ = [
+    "Base",
+    "User",
+    "OAuthAccount",
+    "EmailToken",
+    "RefreshToken",
+    "TrialGrant",
+    "Country",
+    "CountryVersion",
+    "FxRate",
+    "Tier",
+    "Price",
+    "Platform",
+    "PlatformSettings",
+    "Scenario",
+    "WeightSet",
+    "Setting",
+    "CategoryTemplate",
+    "BusinessProfile",
+    "ProfileVersion",
+    "AdTest",
+    "AdAsset",
+    "AdAnalysis",
+    "Archetype",
+    "ArchetypeReaction",
+    "RunResult",
+    "Report",
+    "CalibrationResult",
+    "Payment",
+    "StripeEvent",
+    "LLMUsage",
+    "AuditLog",
+    "TEST_STATUSES",
+    "POST_TYPES",
+    "GOALS",
+    "PIPELINE_STAGES",
+]

@@ -1,0 +1,100 @@
+name: advar
+
+x-backend-common: &backend-common
+  build:
+    context: ./backend
+    target: dev
+    args:
+      UID: ${UID:-1000}
+      GID: ${GID:-1000}
+  user: "${UID:-1000}:${GID:-1000}"
+  env_file: .env
+  environment:
+    PYTHONDONTWRITEBYTECODE: "1"
+    PYTHONUNBUFFERED: "1"
+    WATCHFILES_FORCE_POLLING: ${WATCHFILES_FORCE_POLLING:-false}
+    PIP_CACHE_DIR: /opt/pipcache
+  volumes:
+    - ./backend:/app
+    - venv:/opt/venv
+    - pipcache:/opt/pipcache
+    - storage_data:/data/storage
+  depends_on:
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: advar
+      POSTGRES_PASSWORD: advar
+      POSTGRES_DB: advar
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U advar -d advar"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit:v1.24
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: "1"
+      MP_SMTP_AUTH_ALLOW_INSECURE: "1"
+
+  api:
+    <<: *backend-common
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --reload-dir app --reload-dir engine
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+      WATCHFILES_FORCE_POLLING: ${WATCHFILES_FORCE_POLLING:-false}
+      PIP_CACHE_DIR: /opt/pipcache
+      RUN_MIGRATIONS: "1"
+    ports:
+      - "8000:8000"
+
+  worker:
+    <<: *backend-common
+    command: arq app.workers.worker.WorkerSettings --watch /app
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+      WATCHFILES_FORCE_POLLING: ${WATCHFILES_FORCE_POLLING:-false}
+      PIP_CACHE_DIR: /opt/pipcache
+      RUN_MIGRATIONS: "0"
+
+  stripe-cli:
+    image: stripe/stripe-cli:latest
+    profiles: ["stripe"]
+    command: listen --forward-to api:8000/api/v1/stripe/webhook
+    environment:
+      STRIPE_API_KEY: ${STRIPE_SECRET_KEY}
+      STRIPE_DEVICE_NAME: advar-local
+    depends_on:
+      - api
+
+volumes:
+  pgdata:
+  venv:
+  pipcache:
+  storage_data:

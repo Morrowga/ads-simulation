@@ -1,0 +1,172 @@
+# Restaurant category template (full detail). Published as version 1 by scripts/seed.py.
+# Behaviour numbers are placeholders: source: estimate_calibrate.
+code: restaurant
+name: Restaurant
+parent_code: null
+tags: [food, dining, restaurant]
+version: 3
+change_note: "Reorder basics under price level; customer_mix multiselect; add mixed/global language option"
+questions:
+  - { key: business_name, label: "Business name", type: text, required: true }
+  - key: cuisine
+    label: "Cuisine"
+    type: select
+    required: true
+    options: [thai, isan, japanese, korean, chinese, western, italian, burmese, indian, vietnamese, fusion, cafe, other]
+    feeds_trait: familiarity
+  - { key: what_you_sell, label: "What do you sell? (short description)", type: text, required: true, help: "e.g. grilled seafood, set lunches, late-night noodles" }
+  - { key: signature_dishes, label: "Signature dishes", type: text, required: false }
+  - key: price_level
+    label: "Price level"
+    type: select
+    required: true
+    options: [budget, mid, premium]
+    feeds_trait: price_level
+  - key: location_type
+    label: "Location"
+    type: select
+    required: false
+    options: [street, mall, market, delivery_only, hotel, office_area]
+  - { key: delivery, label: "Do you deliver?", type: boolean, required: false, default: false }
+  - { key: seats, label: "Seats", type: number, required: false, min: 0, max: 2000 }
+  - key: taste_profile
+    label: "Taste profile of your food"
+    type: sliders
+    required: true
+    options: [spice, sweet, sour, adventurousness]
+    min: 0
+    max: 1
+    default: { spice: 0.5, sweet: 0.4, sour: 0.4, adventurousness: 0.4 }
+    feeds_trait: taste
+    help: "0 = none, 1 = very strong"
+  - key: dietary_options
+    label: "Dietary options you offer"
+    type: multiselect
+    required: false
+    options: [halal, vegetarian, vegan, gluten_free, none]
+    feeds_trait: dietary
+  - key: customer_mix
+    label: "Who are your customers?"
+    type: multiselect
+    required: true
+    options: [locals_mostly, mixed_tourists, expats_and_locals, students, office_workers, families]
+    feeds_trait: familiarity
+    help: "Your actual, existing customers today (not who you want this ad to reach). Pick all that apply."
+  - key: customer_languages
+    label: "Languages your customers use"
+    type: multiselect
+    required: false
+    options: [th, en, my, zh, ja, ko, es, mixed]
+    feeds_trait: language_group
+    help: "The languages your existing customers speak today (not the ad's target audience). Pick 'Mixed' if you get a broad international mix."
+  - { key: followers, label: "Followers on your page (this platform)", type: number, required: true, min: 0, max: 50000000, default: 0, feeds_trait: brand_relationship, help: "Your current follower count on the platform you're testing on, e.g. Facebook/Instagram page followers." }
+  - { key: review_count, label: "Number of public reviews", type: number, required: false, min: 0, max: 1000000, default: 0, feeds_trait: brand_relationship }
+  - { key: rating, label: "Average rating (1-5)", type: number, required: false, min: 1, max: 5, feeds_trait: brand_relationship }
+  - { key: months_in_business, label: "Months in business", type: number, required: false, min: 0, max: 1200, default: 0, feeds_trait: brand_relationship }
+trait_dimensions:
+  - key: taste
+    label: "Taste"
+    kind: vector
+    values: [spice, sweet, sour, adventurousness]
+    default_distribution:            # market taste distribution; source: estimate_calibrate
+      spice: { mean: 0.6, sd: 0.22 }
+      sweet: { mean: 0.5, sd: 0.2 }
+      sour: { mean: 0.5, sd: 0.2 }
+      adventurousness: { mean: 0.45, sd: 0.22 }
+    familiarity_shift: { grew_up_with_it: 0.1, tried_elsewhere: 0.0, foreigner_likes_it: -0.05, never_tried: -0.15 }
+  - key: dietary
+    label: "Dietary needs"
+    kind: categorical
+    values: [none, halal, vegetarian, vegan]
+    default_distribution: { none: 0.84, halal: 0.07, vegetarian: 0.07, vegan: 0.02 }   # source: estimate_calibrate
+  - key: familiarity
+    label: "Cuisine familiarity"
+    kind: categorical
+    values: [grew_up_with_it, tried_elsewhere, foreigner_likes_it, never_tried]
+    from_question: customer_mix
+  - key: brand_relationship
+    label: "Brand relationship"
+    kind: reputation
+    values: [unaware, aware_not_tried, tried_liked, tried_disliked, regular]
+activation_rules:                    # ad feature -> trait that reacts to it
+  - { ad_feature: "taste_profile.spice", trait: "taste.spice", weight: 0.8 }
+  - { ad_feature: "taste_profile.sweet", trait: "taste.sweet", weight: 0.5 }
+  - { ad_feature: "taste_profile.adventurousness", trait: "taste.adventurousness", weight: 0.7 }
+  - { ad_feature: "price_shown", trait: "price_sensitivity", weight: 0.6 }
+  - { ad_feature: "discount_pct", trait: "price_sensitivity", weight: 0.8 }
+  - { ad_feature: "trust_signals", trait: "skepticism", weight: 0.7 }
+  - { ad_feature: "hook_strength", trait: "patience", weight: 0.9 }
+default_mixes:
+  locals_mostly: { grew_up_with_it: 0.75, tried_elsewhere: 0.18, foreigner_likes_it: 0.04, never_tried: 0.03 }
+  mixed_tourists: { grew_up_with_it: 0.4, tried_elsewhere: 0.25, foreigner_likes_it: 0.2, never_tried: 0.15 }
+  expats_and_locals: { grew_up_with_it: 0.5, tried_elsewhere: 0.25, foreigner_likes_it: 0.2, never_tried: 0.05 }
+  students: { grew_up_with_it: 0.65, tried_elsewhere: 0.25, foreigner_likes_it: 0.03, never_tried: 0.07 }
+  office_workers: { grew_up_with_it: 0.6, tried_elsewhere: 0.3, foreigner_likes_it: 0.05, never_tried: 0.05 }
+  families: { grew_up_with_it: 0.7, tried_elsewhere: 0.22, foreigner_likes_it: 0.04, never_tried: 0.04 }
+buying_behavior:                     # source: estimate_calibrate
+  impulse_share: 0.6
+  planned_share: 0.4
+  repeat_rate: 0.35
+  price_sensitivity: 0.6
+  decision_time_h: 4
+  typical_basket_usd: 8
+blockers:
+  - { code: price, label: "Price", weight: 0.3 }
+  - { code: relevance, label: "Not for me / wrong taste", weight: 0.25 }
+  - { code: trust, label: "Not sure it is real / good", weight: 0.2 }
+  - { code: shipping, label: "Too far / no delivery", weight: 0.2 }
+  - { code: size, label: "Portion / quantity", weight: 0.05 }
+trust_signals:
+  - { code: reviews, label: "Reviews or ratings visible", weight: 0.85 }
+  - { code: photos_of_real_food, label: "Photos of real food", weight: 0.8 }
+  - { code: location_shown, label: "Location shown", weight: 0.65 }
+  - { code: price_shown, label: "Price shown", weight: 0.7 }
+  - { code: phone_number, label: "Contact / message button", weight: 0.5 }
+comment_topics: [price, product_detail, service, positive, negative, other]
+typical_goals: [messages, sales, awareness, engagement]
+analyzer_hints:
+  look_for: [dish appearance, portion size, price, discount, location, opening hours, delivery, menu, seating, staff]
+  taste_dimensions: [spice, sweet, sour, adventurousness]
+  interest_tags: [food, dining, restaurant]
+benchmark_adjustments:               # multipliers on market benchmarks; source: estimate_calibrate
+  ctr: 1.1
+  message_rate: 1.6
+  cvr: 0.8
+  engagement_rate: 1.1
+calendar:
+  peaks:
+    - { name: lunch, hours: [11, 12, 13], boost: 1.3 }
+    - { name: dinner, hours: [17, 18, 19, 20], boost: 1.35 }
+restrictions:
+  alcohol: "Alcohol promotion is restricted in several markets; check local advertising rules."
+country_overrides:
+  MM:
+    benchmark_adjustments: { message_rate: 2.0, ctr: 1.0 }
+    default_mixes:
+      locals_mostly: { grew_up_with_it: 0.85, tried_elsewhere: 0.1, foreigner_likes_it: 0.02, never_tried: 0.03 }
+  US:
+    trait_dimensions:
+      - key: taste
+        label: "Taste"
+        kind: vector
+        values: [spice, sweet, sour, adventurousness]
+        default_distribution:
+          spice: { mean: 0.4, sd: 0.22 }
+          sweet: { mean: 0.55, sd: 0.2 }
+          sour: { mean: 0.4, sd: 0.2 }
+          adventurousness: { mean: 0.5, sd: 0.22 }
+        familiarity_shift: { grew_up_with_it: 0.1, tried_elsewhere: 0.0, foreigner_likes_it: -0.05, never_tried: -0.15 }
+      - key: dietary
+        label: "Dietary needs"
+        kind: categorical
+        values: [none, halal, vegetarian, vegan]
+        default_distribution: { none: 0.82, halal: 0.02, vegetarian: 0.1, vegan: 0.06 }
+      - key: familiarity
+        label: "Cuisine familiarity"
+        kind: categorical
+        values: [grew_up_with_it, tried_elsewhere, foreigner_likes_it, never_tried]
+        from_question: customer_mix
+      - key: brand_relationship
+        label: "Brand relationship"
+        kind: reputation
+        values: [unaware, aware_not_tried, tried_liked, tried_disliked, regular]

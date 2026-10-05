@@ -1,0 +1,72 @@
+# Facebook — platform settings version 1 (seed). Every value carries a source label.
+# official_spec values: VERIFY against Meta's current official ad specs before launch
+# (https://www.facebook.com/business/ads-guide) — specs change regularly.
+platform: facebook
+name: Facebook
+status: full
+version: 1
+change_note: "Initial seed"
+global:
+  placements:
+    feed:
+      formats: [image, video]
+      ratios: ["1:1", "4:5", "16:9"]
+      video_s: [1, 240]
+      max_caption_chars: 125
+      source: official_spec        # VERIFY against current official ad specs
+    stories:
+      formats: [image, video]
+      ratios: ["9:16"]
+      video_s: [1, 60]
+      max_caption_chars: 125
+      source: official_spec        # VERIFY against current official ad specs
+    reels:
+      formats: [video]
+      ratios: ["9:16"]
+      video_s: [3, 90]
+      max_caption_chars: 72
+      source: official_spec        # VERIFY against current official ad specs
+    marketplace:
+      formats: [image, video]
+      ratios: ["1:1"]
+      video_s: [1, 240]
+      max_caption_chars: 125
+      source: official_spec        # VERIFY against current official ad specs
+  behavior:
+    autoplay: true                 # source: official_spec
+    sound_default: "off"           # source: official_spec
+    avg_seconds_per_post: 1.7      # source: estimate_calibrate
+    hook_window_s: 3.0             # source: estimate_calibrate
+    fatigue_rate: 0.35             # source: estimate_calibrate
+    frequency_cap_per_day: 3       # source: estimate_calibrate
+    sponsored_penalty: 0.25        # source: estimate_calibrate
+    caption_visibility: 0.85       # source: estimate_calibrate
+    sessions_per_day: 7            # source: estimate_calibrate
+  organic:
+    reach_rate_of_followers: 0.06  # source: estimate_calibrate
+    decay_half_life_h: 8           # source: estimate_calibrate
+    share_boost: 0.35              # source: estimate_calibrate
+    ranking_engagement_weight: 0.6 # source: estimate_calibrate
+  actions: [like, comment, share, save, click, message]
+  supported_goals:
+    paid: [sales, messages, traffic, awareness, engagement]
+    boosted: [messages, traffic, awareness, engagement]
+    organic: [awareness, engagement, messages]
+markets:
+  TH:
+    user_share_by_age: { "13-17": 0.6, "18-24": 0.88, "25-34": 0.92, "35-44": 0.9, "45-54": 0.82, "55-64": 0.65, "65+": 0.4 }   # source: public_report
+    peak_hours: [0.3, 0.18, 0.1, 0.06, 0.05, 0.1, 0.3, 0.55, 0.65, 0.6, 0.55, 0.7, 0.85, 0.7, 0.6, 0.62, 0.7, 0.85, 0.95, 1.0, 1.0, 0.95, 0.75, 0.5]   # source: estimate_calibrate
+    benchmarks: { stop_rate: 0.14, ctr: 0.012, cvr: 0.022, cpm_usd: 1.5, comment_rate: 0.005, share_rate: 0.004, message_rate: 0.008, react_rate: 0.04, engagement_rate: 0.05 }   # source: industry_benchmark
+  MM:
+    user_share_by_age: { "13-17": 0.7, "18-24": 0.95, "25-34": 0.95, "35-44": 0.9, "45-54": 0.8, "55-64": 0.6, "65+": 0.35 }   # source: estimate_calibrate
+    peak_hours: [0.25, 0.12, 0.06, 0.04, 0.05, 0.15, 0.4, 0.6, 0.65, 0.55, 0.5, 0.65, 0.8, 0.65, 0.55, 0.55, 0.65, 0.8, 0.95, 1.0, 1.0, 0.9, 0.7, 0.45]   # source: estimate_calibrate
+    benchmarks: { stop_rate: 0.16, ctr: 0.015, cvr: 0.018, cpm_usd: 0.55, comment_rate: 0.007, share_rate: 0.006, message_rate: 0.014, react_rate: 0.055, engagement_rate: 0.065 }   # source: estimate_calibrate
+  US:
+    user_share_by_age: { "13-17": 0.35, "18-24": 0.6, "25-34": 0.72, "35-44": 0.78, "45-54": 0.75, "55-64": 0.7, "65+": 0.55 }   # source: public_report
+    peak_hours: [0.2, 0.1, 0.06, 0.05, 0.06, 0.15, 0.35, 0.55, 0.6, 0.55, 0.55, 0.65, 0.75, 0.65, 0.6, 0.6, 0.65, 0.75, 0.85, 1.0, 0.98, 0.9, 0.7, 0.4]   # source: estimate_calibrate
+    benchmarks: { stop_rate: 0.11, ctr: 0.009, cvr: 0.026, cpm_usd: 9.5, comment_rate: 0.002, share_rate: 0.002, message_rate: 0.003, react_rate: 0.025, engagement_rate: 0.032 }   # source: industry_benchmark
+sources:
+  placements: official_spec
+  behavior: estimate_calibrate
+  organic: estimate_calibrate
+  markets: public_report / estimate_calibrate / industry_benchmark

@@ -1,0 +1,106 @@
+# United States — published as country version 1 by scripts/seed.py.
+# Numeric values are placeholders: source: estimate_calibrate means "replace with calibrated data".
+code: US
+name: United States
+currency: USD
+payment_methods: [card]
+version: 1
+change_note: "Initial seed (placeholder values to be calibrated)"
+data:
+  languages: [en, es, zh]
+  language_groups:
+    - code: en
+      name: English-speaking
+      share: 0.86
+      reading_languages: [en]
+      source: estimate_calibrate
+    - code: es
+      name: Spanish-speaking
+      share: 0.11
+      reading_languages: [es, en]
+      source: estimate_calibrate
+    - code: zh
+      name: Chinese-speaking
+      share: 0.03
+      reading_languages: [zh, en]
+      source: estimate_calibrate
+  culture:
+    english_reading_share: 0.9         # source: estimate_calibrate
+    comprehension_penalty: 0.45        # source: estimate_calibrate
+    sponsored_skepticism: 0.6          # source: estimate_calibrate
+    price_sensitivity: 0.5             # source: estimate_calibrate
+    sharing_propensity: 0.45           # source: estimate_calibrate
+    trust_signals:                      # source: estimate_calibrate
+      reviews: 0.9
+      free_shipping: 0.85
+      cash_on_delivery: 0.1
+      official_store: 0.6
+      local_language: 0.3
+      celebrity: 0.4
+      price_shown: 0.6
+      location_shown: 0.5
+      photos_of_real_food: 0.7
+      photos_of_real_product: 0.75
+      guarantee: 0.75
+      verified_badge: 0.55
+      phone_number: 0.3
+    tone:                               # source: estimate_calibrate
+      humor: 0.65
+      formal: 0.3
+      emotional: 0.5
+      hard_sell: 0.35
+    colour_meanings:                    # source: public_report
+      red: "urgency, sales"
+      green: "eco, money"
+      blue: "trust"
+      black: "premium"
+    trait_means:                        # source: estimate_calibrate
+      patience: 0.4
+      impulsiveness: 0.52
+      skepticism: 0.6
+      anger: 0.32
+      openness: 0.58
+      price_sensitivity: 0.5
+      social: 0.5
+      brand_loyalty: 0.42
+    ad_sense:
+      likes: ["free shipping", "reviews", "clear returns policy", "short punchy video"]
+      dislikes: ["fake urgency", "clickbait", "poor grammar", "hidden fees"]
+  calendar:
+    paydays: [1, 15]                    # source: public_report
+    weekend_days: [5, 6]
+    dow_activity: [1.0, 1.0, 0.98, 0.98, 1.02, 1.08, 1.12]   # source: estimate_calibrate
+    holidays:                           # source: public_report
+      - { date: "01-01", name: "New Year", days: 1 }
+      - { date: "07-04", name: "Independence Day", days: 1 }
+      - { date: "11-27", name: "Thanksgiving (approx.)", days: 2 }
+      - { date: "12-25", name: "Christmas", days: 2 }
+    festivals:
+      - { date: "11-28", name: "Black Friday (approx.)", days: 4 }
+    seasons:                            # source: estimate_calibrate
+      - { name: "winter", months: [12, 1, 2], mood: -0.03 }
+      - { name: "summer", months: [6, 7, 8], mood: 0.04 }
+  demographics:                         # source: estimate_calibrate
+    online_population: 300000000
+    age_bands: { "13-17": 0.06, "18-24": 0.13, "25-34": 0.20, "35-44": 0.19, "45-54": 0.17, "55-64": 0.14, "65+": 0.11 }
+    gender: { f: 0.51, m: 0.47, other: 0.02 }
+    income_bands: { low: 0.25, lower_mid: 0.32, upper_mid: 0.30, high: 0.13 }
+  benchmarks:                           # source: industry_benchmark / estimate_calibrate
+    stop_rate: 0.11
+    ctr: 0.009
+    cvr: 0.025
+    cpm_usd: 9.0
+    comment_rate: 0.002
+    share_rate: 0.002
+    save_rate: 0.004
+    message_rate: 0.003
+    react_rate: 0.025
+    sentiment: 0.08
+    buy_rate: 0.0022
+    engagement_rate: 0.032
+sources:
+  language_groups: estimate_calibrate
+  culture: estimate_calibrate
+  calendar: public_report
+  demographics: estimate_calibrate
+  benchmarks: industry_benchmark

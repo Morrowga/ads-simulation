@@ -1,0 +1,17 @@
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+exclude = ["migrations/versions"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "W"]
+ignore = ["B008", "E501", "B904", "UP017", "UP038", "B023"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+testpaths = ["tests"]
+# no .pytest_cache in the bind mount (keeps the project clean and avoids worker reloads)
+addopts = "-p no:cacheprovider"
+timeout = 600
+filterwarnings = ["ignore::DeprecationWarning"]

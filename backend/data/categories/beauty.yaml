@@ -1,0 +1,110 @@
+# Beauty category template. Published as version 2 by scripts/seed.py.
+code: beauty
+name: Beauty & personal care
+parent_code: null
+tags: [beauty, skincare, cosmetics, shopping]
+version: 2
+change_note: "Reorder basics under price level; customer_mix multiselect; add mixed/global language option"
+questions:
+  - { key: business_name, label: "Brand, clinic or salon name", type: text, required: true }
+  - key: business_type
+    label: "Type of business"
+    type: select
+    required: true
+    options: [skincare_products, makeup, salon, clinic, spa, hair_products, fragrance]
+  - { key: what_you_sell, label: "What do you sell? (short description)", type: text, required: true }
+  - key: price_level
+    label: "Price level"
+    type: select
+    required: true
+    options: [budget, mid, premium, luxury]
+    feeds_trait: price_level
+  - { key: certified, label: "Registered / certified products?", type: boolean, required: false, default: false }
+  - key: benefit_profile
+    label: "Main promised benefits"
+    type: sliders
+    required: true
+    options: [natural, whitening_brightening, anti_aging, glamour]
+    min: 0
+    max: 1
+    default: { natural: 0.5, whitening_brightening: 0.4, anti_aging: 0.3, glamour: 0.4 }
+    feeds_trait: taste
+    help: "0 = none, 1 = very strong"
+  - key: customer_mix
+    label: "Who are your customers?"
+    type: multiselect
+    required: true
+    options: [young_women, working_women, men_grooming, mixed, mature]
+    feeds_trait: familiarity
+    help: "Your actual, existing customers today (not who you want this ad to reach). Pick all that apply."
+  - key: customer_languages
+    label: "Languages your customers use"
+    type: multiselect
+    required: false
+    options: [th, en, my, zh, ja, ko, es, mixed]
+    feeds_trait: language_group
+    help: "The languages your existing customers speak today (not the ad's target audience). Pick 'Mixed' if you get a broad international mix."
+  - { key: followers, label: "Followers on your page (this platform)", type: number, required: true, min: 0, max: 50000000, default: 0, feeds_trait: brand_relationship, help: "Your current follower count on the platform you're testing on, e.g. Facebook/Instagram page followers." }
+  - { key: review_count, label: "Number of public reviews", type: number, required: false, min: 0, max: 1000000, default: 0, feeds_trait: brand_relationship }
+  - { key: rating, label: "Average rating (1-5)", type: number, required: false, min: 1, max: 5, feeds_trait: brand_relationship }
+  - { key: months_in_business, label: "Months in business", type: number, required: false, min: 0, max: 1200, default: 0, feeds_trait: brand_relationship }
+trait_dimensions:
+  - key: taste
+    label: "Benefit preference"
+    kind: vector
+    values: [natural, whitening_brightening, anti_aging, glamour]
+    default_distribution:
+      natural: { mean: 0.55, sd: 0.2 }
+      whitening_brightening: { mean: 0.5, sd: 0.25 }
+      anti_aging: { mean: 0.4, sd: 0.25 }
+      glamour: { mean: 0.45, sd: 0.22 }
+    familiarity_shift: { grew_up_with_it: 0.05, tried_elsewhere: 0.0, foreigner_likes_it: 0.0, never_tried: -0.1 }
+  - key: familiarity
+    label: "Familiarity with the product type"
+    kind: categorical
+    values: [grew_up_with_it, tried_elsewhere, foreigner_likes_it, never_tried]
+    from_question: customer_mix
+  - key: brand_relationship
+    label: "Brand relationship"
+    kind: reputation
+    values: [unaware, aware_not_tried, tried_liked, tried_disliked, regular]
+activation_rules:
+  - { ad_feature: "trust_signals", trait: "skepticism", weight: 0.9 }
+  - { ad_feature: "visual_quality", trait: "openness", weight: 0.7 }
+  - { ad_feature: "price_shown", trait: "price_sensitivity", weight: 0.6 }
+  - { ad_feature: "discount_pct", trait: "price_sensitivity", weight: 0.7 }
+  - { ad_feature: "hook_strength", trait: "patience", weight: 0.9 }
+default_mixes:
+  young_women: { grew_up_with_it: 0.55, tried_elsewhere: 0.3, foreigner_likes_it: 0.05, never_tried: 0.1 }
+  working_women: { grew_up_with_it: 0.5, tried_elsewhere: 0.35, foreigner_likes_it: 0.05, never_tried: 0.1 }
+  men_grooming: { grew_up_with_it: 0.2, tried_elsewhere: 0.3, foreigner_likes_it: 0.05, never_tried: 0.45 }
+  mixed: { grew_up_with_it: 0.4, tried_elsewhere: 0.35, foreigner_likes_it: 0.1, never_tried: 0.15 }
+  mature: { grew_up_with_it: 0.5, tried_elsewhere: 0.35, foreigner_likes_it: 0.05, never_tried: 0.1 }
+buying_behavior: { impulse_share: 0.4, planned_share: 0.6, repeat_rate: 0.45, price_sensitivity: 0.55, decision_time_h: 48, typical_basket_usd: 30 }
+blockers:
+  - { code: trust, label: "Safety / is it real", weight: 0.35 }
+  - { code: price, label: "Price", weight: 0.3 }
+  - { code: relevance, label: "Not for my skin / needs", weight: 0.2 }
+  - { code: shipping, label: "Shipping", weight: 0.1 }
+  - { code: size, label: "Quantity / size", weight: 0.05 }
+trust_signals:
+  - { code: reviews, label: "Reviews / before-after", weight: 0.9 }
+  - { code: verified_badge, label: "Certification / registration", weight: 0.85 }
+  - { code: photos_of_real_product, label: "Real product photos", weight: 0.7 }
+  - { code: guarantee, label: "Guarantee", weight: 0.6 }
+  - { code: price_shown, label: "Price shown", weight: 0.6 }
+comment_topics: [price, product_detail, service, positive, negative, other]
+typical_goals: [sales, messages, awareness, engagement]
+analyzer_hints:
+  look_for: [product packaging, skin close-up, before-after, ingredients, certification, price, promotion, model]
+  taste_dimensions: [natural, whitening_brightening, anti_aging, glamour]
+  interest_tags: [beauty, skincare, cosmetics]
+benchmark_adjustments: { ctr: 1.0, cvr: 0.9, message_rate: 1.4, save_rate: 1.3 }
+calendar:
+  peaks:
+    - { name: evening, hours: [20, 21, 22], boost: 1.3 }
+restrictions:
+  claims: "Medical or whitening claims are regulated; check local advertising rules."
+country_overrides:
+  MM:
+    benchmark_adjustments: { message_rate: 2.0 }

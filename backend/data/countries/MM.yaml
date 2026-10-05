@@ -1,0 +1,112 @@
+# Myanmar — published as country version 1 by scripts/seed.py. Manual payment only.
+# Numeric values are placeholders: source: estimate_calibrate means "replace with calibrated data".
+code: MM
+name: Myanmar
+currency: MMK
+payment_methods: [manual]
+version: 1
+change_note: "Initial seed (placeholder values to be calibrated)"
+data:
+  languages: [my, en, th, zh]
+  language_groups:
+    - code: my
+      name: Burmese-speaking
+      share: 0.88
+      reading_languages: [my]
+      source: estimate_calibrate
+    - code: en
+      name: English-speaking (expats, returnees)
+      share: 0.05
+      reading_languages: [en, my]
+      source: estimate_calibrate
+    - code: zh
+      name: Chinese-speaking (Sino-Burmese, traders)
+      share: 0.05
+      reading_languages: [zh, my]
+      source: estimate_calibrate
+    - code: th
+      name: Thai-speaking (border areas)
+      share: 0.02
+      reading_languages: [th, my]
+      source: estimate_calibrate
+  culture:
+    english_reading_share: 0.22        # source: estimate_calibrate
+    comprehension_penalty: 0.35        # source: estimate_calibrate
+    sponsored_skepticism: 0.55         # source: estimate_calibrate
+    price_sensitivity: 0.75            # source: estimate_calibrate
+    sharing_propensity: 0.7            # source: estimate_calibrate
+    trust_signals:                      # source: estimate_calibrate
+      reviews: 0.7
+      free_shipping: 0.6
+      cash_on_delivery: 0.9
+      official_store: 0.5
+      local_language: 0.85
+      celebrity: 0.6
+      price_shown: 0.85
+      location_shown: 0.7
+      photos_of_real_food: 0.8
+      photos_of_real_product: 0.8
+      guarantee: 0.5
+      verified_badge: 0.55
+      phone_number: 0.7
+    tone:                               # source: estimate_calibrate
+      humor: 0.6
+      formal: 0.4
+      emotional: 0.65
+      hard_sell: 0.5
+    colour_meanings:                    # source: public_report
+      gold: "pagodas, prosperity"
+      yellow: "monkhood, respect"
+      red: "celebration, courage"
+      green: "peace, nature"
+      white: "purity"
+    trait_means:                        # source: estimate_calibrate
+      patience: 0.48
+      impulsiveness: 0.5
+      skepticism: 0.55
+      anger: 0.3
+      openness: 0.55
+      price_sensitivity: 0.75
+      social: 0.7
+      brand_loyalty: 0.5
+    ad_sense:
+      likes: ["price in MMK", "phone number to call", "cash on delivery", "Burmese caption", "delivery area"]
+      dislikes: ["English-only caption", "no price", "no contact", "foreign-looking stock photos"]
+  calendar:
+    paydays: [28, 30, 1]                # source: estimate_calibrate
+    weekend_days: [5, 6]
+    dow_activity: [1.0, 0.98, 0.98, 1.0, 1.04, 1.1, 1.12]   # source: estimate_calibrate
+    holidays:                           # source: public_report
+      - { date: "01-04", name: "Independence Day", days: 1 }
+      - { date: "04-13", name: "Thingyan", days: 5 }
+      - { date: "11-15", name: "Tazaungdaing (approx.)", days: 2 }
+    festivals:
+      - { date: "10-20", name: "Thadingyut (approx.)", days: 3 }
+    seasons:                            # source: estimate_calibrate
+      - { name: "hot", months: [3, 4, 5], mood: -0.02 }
+      - { name: "rainy", months: [6, 7, 8, 9, 10], mood: -0.06 }
+      - { name: "cool", months: [11, 12, 1, 2], mood: 0.05 }
+  demographics:                         # source: estimate_calibrate
+    online_population: 24000000
+    age_bands: { "13-17": 0.09, "18-24": 0.22, "25-34": 0.27, "35-44": 0.20, "45-54": 0.12, "55-64": 0.07, "65+": 0.03 }
+    gender: { f: 0.5, m: 0.48, other: 0.02 }
+    income_bands: { low: 0.5, lower_mid: 0.32, upper_mid: 0.14, high: 0.04 }
+  benchmarks:                           # source: industry_benchmark / estimate_calibrate
+    stop_rate: 0.15
+    ctr: 0.014
+    cvr: 0.018
+    cpm_usd: 0.6
+    comment_rate: 0.006
+    share_rate: 0.005
+    save_rate: 0.003
+    message_rate: 0.012
+    react_rate: 0.05
+    sentiment: 0.12
+    buy_rate: 0.0025
+    engagement_rate: 0.06
+sources:
+  language_groups: estimate_calibrate
+  culture: estimate_calibrate
+  calendar: public_report
+  demographics: estimate_calibrate
+  benchmarks: industry_benchmark

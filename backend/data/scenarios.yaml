@@ -1,0 +1,94 @@
+# Seed scenarios (published as version 1). Modifiers: mood (-1..1), competition (x), activity (x),
+# buy_boost (added to the buy decision), discount_norm (how normal discounts are; higher = discounts matter more).
+# All values: source: estimate_calibrate.
+scenarios:
+  - code: normal
+    name: Normal week
+    description: "A regular week without special events."
+    modifiers: { mood: 0.0, competition: 1.0, activity: 1.0, buy_boost: 0.0, discount_norm: 1.0 }
+    country_codes: []
+    category_codes: []
+    date_rules: {}
+    weight: 1.0
+    active: true
+  - code: busy_week
+    name: Busy competition
+    description: "Many competing ads in the feed; people are harder to reach."
+    modifiers: { mood: -0.1, competition: 1.6, activity: 1.0, buy_boost: 0.0, discount_norm: 1.0 }
+    country_codes: []
+    category_codes: []
+    date_rules: {}
+    weight: 0.9
+    active: true
+  - code: rainy_low
+    name: Rainy / low mood
+    description: "Rainy days: more scrolling, lower mood, more delivery orders."
+    modifiers: { mood: -0.3, competition: 1.0, activity: 1.15, buy_boost: 0.05, discount_norm: 1.0 }
+    country_codes: []
+    category_codes: []
+    date_rules: {}
+    weight: 0.8
+    active: true
+  - code: payday
+    name: Payday
+    description: "End-of-month payday: better mood and more willingness to buy."
+    modifiers: { mood: 0.2, competition: 1.2, activity: 1.05, buy_boost: 0.25, discount_norm: 1.0 }
+    country_codes: []
+    category_codes: []
+    date_rules: {}
+    weight: 0.85
+    active: true
+  - code: sale_season
+    name: Sale season
+    description: "Sale season: discounts are everywhere, competition is intense."
+    modifiers: { mood: 0.15, competition: 1.8, activity: 1.2, buy_boost: 0.1, discount_norm: 1.4 }
+    country_codes: []
+    category_codes: []
+    date_rules: {}
+    weight: 0.8
+    active: true
+  - code: songkran_th
+    name: Songkran (Thailand, April)
+    description: "Thai New Year: holidays, travel, water festival; food and travel offers do well."
+    modifiers: { mood: 0.3, competition: 1.3, activity: 1.25, buy_boost: 0.15, discount_norm: 1.1 }
+    country_codes: [TH]
+    category_codes: []
+    date_rules: { months: [4] }
+    weight: 0.95
+    active: true
+  - code: thingyan_mm
+    name: Thingyan (Myanmar, April)
+    description: "Burmese New Year water festival: many people off work, festive mood."
+    modifiers: { mood: 0.3, competition: 1.2, activity: 1.3, buy_boost: 0.1, discount_norm: 1.1 }
+    country_codes: [MM]
+    category_codes: []
+    date_rules: { months: [4] }
+    weight: 0.95
+    active: true
+  - code: rainy_season_mm
+    name: Rainy season (Myanmar)
+    description: "Monsoon months in Myanmar: heavy rain, more time online, delivery preferred."
+    modifiers: { mood: -0.2, competition: 1.0, activity: 1.2, buy_boost: 0.05, discount_norm: 1.0 }
+    country_codes: [MM]
+    category_codes: []
+    date_rules: { months: [6, 7, 8, 9] }
+    weight: 0.7
+    active: true
+  - code: double_day_sale
+    name: 11.11 / 12.12 sale days
+    description: "Marketplace mega-sale days in Southeast Asia."
+    modifiers: { mood: 0.2, competition: 2.0, activity: 1.3, buy_boost: 0.2, discount_norm: 1.6 }
+    country_codes: [TH, MM]
+    category_codes: [online_shop, fashion, beauty]
+    date_rules: { date_ranges: [{ from: "11-09", to: "11-13" }, { from: "12-10", to: "12-14" }] }
+    weight: 0.9
+    active: true
+  - code: black_friday_us
+    name: Black Friday / Cyber Monday (US)
+    description: "Peak US shopping weekend."
+    modifiers: { mood: 0.15, competition: 2.2, activity: 1.3, buy_boost: 0.25, discount_norm: 1.7 }
+    country_codes: [US]
+    category_codes: []
+    date_rules: { date_ranges: [{ from: "11-24", to: "12-02" }] }
+    weight: 0.9
+    active: true

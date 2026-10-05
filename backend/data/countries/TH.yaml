@@ -1,0 +1,116 @@
+# Thailand — published as country version 1 by scripts/seed.py.
+# Numeric values are placeholders: source: estimate_calibrate means "replace with calibrated data".
+code: TH
+name: Thailand
+currency: THB
+payment_methods: [card]
+version: 1
+change_note: "Initial seed (placeholder values to be calibrated)"
+data:
+  languages: [th, en, my, zh]
+  language_groups:
+    - code: th
+      name: Thai-speaking
+      share: 0.84
+      reading_languages: [th, en]
+      source: estimate_calibrate
+    - code: en
+      name: English-speaking (expats, tourists)
+      share: 0.07
+      reading_languages: [en]
+      source: estimate_calibrate
+    - code: my
+      name: Burmese-speaking (migrant workers)
+      share: 0.06
+      reading_languages: [my, th]
+      source: estimate_calibrate
+    - code: zh
+      name: Chinese-speaking (tourists, residents)
+      share: 0.03
+      reading_languages: [zh, en]
+      source: estimate_calibrate
+  culture:
+    english_reading_share: 0.35        # share of non-English groups who also read English; source: estimate_calibrate
+    comprehension_penalty: 0.4         # caption effect factor when the agent cannot read the caption language; source: estimate_calibrate
+    sponsored_skepticism: 0.45         # source: estimate_calibrate
+    price_sensitivity: 0.62            # source: estimate_calibrate
+    sharing_propensity: 0.65           # source: estimate_calibrate
+    trust_signals:                      # weight of each visible trust signal; source: estimate_calibrate
+      reviews: 0.85
+      free_shipping: 0.75
+      cash_on_delivery: 0.8
+      official_store: 0.6
+      local_language: 0.7
+      celebrity: 0.55
+      price_shown: 0.7
+      location_shown: 0.6
+      photos_of_real_food: 0.75
+      photos_of_real_product: 0.7
+      guarantee: 0.55
+      verified_badge: 0.5
+      phone_number: 0.45
+    tone:                               # preferred tone 0-1; source: estimate_calibrate
+      humor: 0.7
+      formal: 0.3
+      emotional: 0.6
+      hard_sell: 0.45
+    colour_meanings:                    # source: public_report
+      red: "energy, luck (Chinese-Thai), Sunday"
+      yellow: "royal colour, Monday"
+      gold: "prosperity, temples"
+      green: "freshness, Wednesday"
+      white: "purity, mourning in some contexts"
+      black: "mourning; avoid for celebrations"
+    trait_means:                        # source: estimate_calibrate
+      patience: 0.42
+      impulsiveness: 0.56
+      skepticism: 0.48
+      anger: 0.28
+      openness: 0.6
+      price_sensitivity: 0.62
+      social: 0.66
+      brand_loyalty: 0.45
+    ad_sense:
+      likes: ["clear price", "real photos", "promotions with a deadline", "LINE / message ordering", "delivery info"]
+      dislikes: ["hard sell without price", "stock photos", "long text", "no location"]
+  calendar:
+    paydays: [25, 30]                   # source: public_report
+    weekend_days: [5, 6]
+    dow_activity: [1.0, 0.98, 0.97, 1.0, 1.06, 1.14, 1.1]   # Mon..Sun; source: estimate_calibrate
+    holidays:                           # source: public_report
+      - { date: "01-01", name: "New Year", days: 1 }
+      - { date: "04-13", name: "Songkran", days: 3 }
+      - { date: "12-05", name: "Father's Day", days: 1 }
+      - { date: "12-31", name: "New Year's Eve", days: 1 }
+    festivals:
+      - { date: "11-15", name: "Loy Krathong (approx.)", days: 1 }
+      - { date: "11-11", name: "11.11 sale", days: 1 }
+      - { date: "12-12", name: "12.12 sale", days: 1 }
+    seasons:                            # source: estimate_calibrate
+      - { name: "hot", months: [3, 4, 5], mood: 0.0 }
+      - { name: "rainy", months: [6, 7, 8, 9, 10], mood: -0.05 }
+      - { name: "cool", months: [11, 12, 1, 2], mood: 0.05 }
+  demographics:                         # share of the online population; source: estimate_calibrate
+    online_population: 52000000
+    age_bands: { "13-17": 0.07, "18-24": 0.16, "25-34": 0.24, "35-44": 0.22, "45-54": 0.16, "55-64": 0.10, "65+": 0.05 }
+    gender: { f: 0.52, m: 0.46, other: 0.02 }
+    income_bands: { low: 0.34, lower_mid: 0.36, upper_mid: 0.22, high: 0.08 }
+  benchmarks:                           # market-level defaults, overridden per platform; source: industry_benchmark / estimate_calibrate
+    stop_rate: 0.13
+    ctr: 0.012
+    cvr: 0.022
+    cpm_usd: 1.6
+    comment_rate: 0.004
+    share_rate: 0.003
+    save_rate: 0.004
+    message_rate: 0.007
+    react_rate: 0.035
+    sentiment: 0.1
+    buy_rate: 0.0026
+    engagement_rate: 0.045
+sources:
+  language_groups: estimate_calibrate
+  culture: estimate_calibrate
+  calendar: public_report
+  demographics: estimate_calibrate
+  benchmarks: industry_benchmark

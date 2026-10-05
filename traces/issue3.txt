@@ -1,0 +1,28 @@
+**Issue 3 — Profile CRUD, Engine Run Fixes, Test Title & Live Reveal**
+
+**Frontend**
+
+1. Profile card: removed the circle test-count badge. `Version vN` now sits bottom-left and `Tests N` bottom-right on the same row, under the summary.
+2. Profile edit: the category is now read-only and shows the previous category, and saving no longer asks for it again. Added `profileEditMetaSchema` in `lib/schemas.ts`.
+3. Profile edit: cuisine came back blank and "required" after re-opening. `profile-form.tsx` now ignores the empty value the select fires, so a saved value is no longer wiped.
+4. Toaster: text is vertically centered, padding is even, the close button is a fixed 24px, and the success border is `#0071b5`.
+5. Skeleton loading: `PageSkeleton` now matches the real layout (`list`, `cards` and `form` variants, optional header). Added `AppShellSkeleton` with the sidebar and used it in `auth-gate.tsx`, all inside the existing `loading.tsx`.
+6. Live page failed banner: users see a friendly message, and the raw error text is shown to admins only. Added the `live.failed` strings in `en.json` and `th.json`.
+7. Reusable inline-editable test title (`EditableTitle` and `TestTitle`): plain text with a pencil, and double-click or the pencil enters edit mode. Enter saves, Escape cancels, empty and over-160-character titles are rejected, and the edit input has a ghost style. It is placed in the wizard header (saves to the local draft before the test exists, through the API after), the overview page and the report page. `PageHeader` `title` now accepts a node, and the `testTitle` strings were added in `en.json` and `th.json`.
+8. Confirm page: for a duplicate test, the checkbox and Continue bar is hidden. The duplicate message and hint are now the last content on the page.
+9. Confirm and checkout flow: an `awaiting_payment` test opened from the list or the overview page now goes to the confirm page instead of checkout. Checkout is only reachable through the checkbox and Continue. Changed `testHref` in `lib/test-routes.ts` and the overview page.
+10. Live completion reveal: new `RevealCard` in `components/live/reveal-card.tsx`.
+    - The check icon and "N runs complete" sit top-left on one line.
+    - The node flow fades in one node at a time, centered: AdVar logo → Virtual Engine (Cpu, `#59534c`) → Your Ad (Ad, `#e6332e`) → Final Score. Connector lines join at each box's center, and labels are bold under each node.
+    - Confidence text (grey label, bold capitalized colored value) and the Open report button are on the next line at the right end.
+    - The card has no border.
+    - Removed the 1.5 s auto-redirect to the report.
+    - Added a temporary `/dev-reveal` mock page for testing, to be deleted afterwards.
+
+**Backend**
+
+1. Worker crash `TypeError: unhashable type: 'list'` when a paid test ran (list-shaped `customer_mix`): `engine/profile_traits.py` `familiarity_shares` now accepts a string, list or dict.
+2. Token budget error (`Token budget of 3000000`): the virtual-agent reaction step now runs in the rule-based engine (`heuristic_reaction` in `engine/priors.py`) and no longer calls OpenAI. `app/llm/tasks.py` `react_archetypes` is engine-only, `app/workers/run_test.py` uses `model="engine"`, and the `classify_comments` LLM block is removed. Per-ad token cost drops to about zero for the reaction stage.
+3. Worker `ImportError: cannot import name 'positive_share'`: fixed by replacing the whole `engine/priors.py` file (it had lost `priors_from_reactions` and `positive_share`), plus the import in `tasks.py`.
+4. Category YAML templates updated to the restaurant v3 format (restaurant v3; beauty, cafe_drinks, fashion, online_shop and other v2). The new versions are not published yet.
+5. `PATCH /tests/{id}`: a request containing only `title` is now allowed in any status, so completed tests can be renamed. This is a shortcut in `patch_test` and is not tested yet.

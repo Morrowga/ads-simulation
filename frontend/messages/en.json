@@ -1,0 +1,1708 @@
+{
+  "common": {
+    "loading": "Loading…",
+    "retry": "Retry",
+    "somethingWrong": "Something went wrong",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "copy": "Copy",
+    "copied": "Copied",
+    "next": "Next",
+    "previous": "Previous",
+    "open": "Open",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "lightMode": "Switch to light mode",
+    "darkMode": "Switch to dark mode",
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "The page you are looking for does not exist or has moved.",
+    "backHome": "Back to home",
+    "removeTag": "Remove {tag}"
+  },
+  "nav": {
+    "main": "Main navigation",
+    "dashboard": "Dashboard",
+    "profiles": "Business Profiles",
+    "payments": "Payments",
+    "settings": "Settings",
+    "newTest": "New test",
+    "logout": "Log out",
+    "admin": "Admin",
+    "adminOverview": "Overview",
+    "adminPayments": "Manual orders",
+    "adminTests": "Tests",
+    "adminUsers": "Users",
+    "adminPrices": "Prices",
+    "adminSettings": "App settings",
+    "adminCountries": "Countries",
+    "adminCategories": "Categories",
+    "adminPlatforms": "Platforms",
+    "adminScenarios": "Scenarios",
+    "adminWeights": "Weights",
+    "adminFx": "Exchange rates",
+    "pendingOrders": "{count} orders awaiting approval"
+  },
+  "status": {
+    "test": {
+      "draft": "Draft",
+      "awaiting_payment": "Awaiting payment",
+      "payment_review": "Payment review",
+      "queued": "Queued",
+      "running": "Running",
+      "completed": "Completed",
+      "failed": "Failed",
+      "refunded": "Refunded"
+    },
+    "payment": {
+      "pending": "Pending",
+      "pending_review": "Awaiting approval",
+      "succeeded": "Paid",
+      "failed": "Failed",
+      "cancelled": "Cancelled",
+      "expired": "Expired",
+      "refunded": "Refunded",
+      "consumed": "Used"
+    },
+    "platform": {
+      "full": "Full",
+      "beta": "Beta",
+      "planned": "Planned"
+    }
+  },
+  "score": {
+    "score": "Score",
+    "weak": "Weak",
+    "below": "Below average",
+    "average": "Average",
+    "good": "Good",
+    "strong": "Strong"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Enter a valid e-mail address",
+    "password_min": "Use at least 8 characters",
+    "password_match": "Passwords do not match",
+    "terms": "Please accept the terms to continue",
+    "too_long": "Too long",
+    "caption_max": "The caption can have at most 2,200 characters",
+    "gender_required": "Choose at least one gender",
+    "location_required": "Enter at least one location",
+    "age_range": "The upper age must be at least the lower age",
+    "placement_required": "Choose at least one placement",
+    "platform_required": "Choose at least one platform",
+    "shares_total": "Budget shares must add up to 100%",
+    "budget_required": "Enter a budget for paid and boosted posts",
+    "start_future": "The start date must be today or later"
+  },
+  "errors": {
+    "validation_error": "Some inputs are invalid. Please check the form.",
+    "not_found": "Not found.",
+    "forbidden": "You do not have access to this.",
+    "unauthorized": "Please log in to continue.",
+    "conflict": "This action conflicts with the current state. Reload and try again.",
+    "rate_limited": "Too many requests. Please wait a moment and try again.",
+    "internal_error": "The server hit a problem. Please try again in a moment.",
+    "invalid_credentials": "Wrong e-mail or password.",
+    "email_taken": "An account with this e-mail already exists.",
+    "email_not_verified": "Please verify your e-mail address first.",
+    "invalid_token": "This link is invalid.",
+    "token_expired": "This link has expired. Request a new one.",
+    "account_blocked": "This account is blocked. Contact support.",
+    "invalid_state": "This action is not possible in the current state.",
+    "test_not_editable": "This test can no longer be edited.",
+    "cancel_window_closed": "Results have started; this test can no longer be cancelled.",
+    "restart_not_available": "A free restart is not available for this test.",
+    "duplicate_test": "You already tested this exact ad. Change something before running it again.",
+    "confirm_required": "Confirm the test before paying.",
+    "budget_required": "A budget is required for this post type.",
+    "budget_not_allowed": "Organic posts have no budget.",
+    "budget_shares_invalid": "Budget shares must add up to 100%.",
+    "goal_not_supported": "This goal is not supported by the chosen platform.",
+    "platform_not_available": "This platform is not available.",
+    "schedule_invalid": "The schedule is invalid.",
+    "asset_invalid": "This file is not a supported image or video.",
+    "asset_too_large": "This file is too large.",
+    "profile_invalid": "Some profile answers are missing or invalid.",
+    "audience_invalid": "The audience settings are invalid.",
+    "payment_required": "A new payment is required to restart this test.",
+    "method_not_allowed": "This payment method is not available for your country.",
+    "trial_not_available": "The free trial is not available.",
+    "trial_review_required": "The free trial needs a review first.",
+    "payment_invalid_state": "The payment is not in a state that allows this.",
+    "payment_not_found": "Payment not found.",
+    "stripe_not_configured": "Card payments are not configured yet.",
+    "llm_not_configured": "The AI provider is not configured.",
+    "llm_budget_exceeded": "The AI budget for this test was exceeded.",
+    "llm_daily_cap_reached": "The daily AI spending cap was reached. Try again tomorrow.",
+    "llm_unavailable": "The AI provider is temporarily unavailable.",
+    "engine_error": "The simulation engine hit an error.",
+    "settings_version_invalid": "This settings version is invalid.",
+    "settings_not_draft": "Only draft versions can be edited or published.",
+    "settings_not_published": "No published version exists yet.",
+    "country_not_active": "This country is not active.",
+    "category_not_found": "Category not found.",
+    "network_error": "Cannot reach the server. Check your connection.",
+    "unknown": "Something went wrong."
+  },
+  "marketing": {
+    "nav": {
+      "main": "Site navigation",
+      "howItWorks": "How it works",
+      "pricing": "Pricing",
+      "login": "Log in",
+      "register": "Start free",
+      "dashboard": "Dashboard"
+    },
+    "footer": {
+      "copyright": "© {year} ADVAR. Virtual ad testing.",
+      "legal": "Legal",
+      "terms": "Terms",
+      "privacy": "Privacy"
+    },
+    "home": {
+      "eyebrow": "Virtual ad testing",
+      "title": "See how customers react to your ad before you pay for it.",
+      "subtitle": "Upload your ad, describe your business and audience, and watch a virtual audience of thousands react in minutes. You get a score, the funnel, comments and the reasons behind every number.",
+      "cta": "Test your first ad free",
+      "secondary": "How it works",
+      "ctaNote": "No card needed for the first test. Standard tier included.",
+      "howTitle": "How it works",
+      "step": "Step {n}",
+      "steps": {
+        "upload": {
+          "title": "Upload your ad",
+          "body": "Image or short video, caption, headline and a call to action. We check specs per platform."
+        },
+        "audience": {
+          "title": "Describe your business and audience",
+          "body": "A Business Profile preset plus target country, locations, languages, ages and interests."
+        },
+        "watch": {
+          "title": "Watch the simulation",
+          "body": "Hundreds of runs across scenarios. Score, funnel and live comments update as it runs."
+        },
+        "reasons": {
+          "title": "Read the reasons",
+          "body": "Every number comes with its evidence: who stopped, who skipped, what they asked, and why."
+        }
+      },
+      "sampleTitle": "What a report shows",
+      "sampleBody": "Reasons, not advice. The report explains what happened in the simulation; you decide what to do with it.",
+      "sample": {
+        "score": {
+          "title": "Score with a range",
+          "body": "0–100 with the P10–P90 range and a confidence label based on runs."
+        },
+        "funnel": {
+          "title": "Funnel with reasons",
+          "body": "Seen → stopped → reacted → commented → clicked → bought, each with a why."
+        },
+        "comments": {
+          "title": "Virtual comments",
+          "body": "What customer types said, grouped by topic: price, product, service, positive, negative."
+        }
+      },
+      "disclaimer": "Results come from a simulation of virtual audiences. They show likely reactions, not guaranteed outcomes.",
+      "pricingTitle": "Pricing",
+      "pricingBody": "Pay per test. The first platform is included; each extra platform costs a little more.",
+      "finalTitle": "Ready to test your ad?",
+      "finalBody": "Create a profile, upload an ad and see the reactions in minutes."
+    },
+    "pricing": {
+      "title": "Pricing",
+      "intro": "Three tiers, priced per test. Prices are in USD; where a local currency is set up we show an approximate local amount.",
+      "localHint": "Choose your country to see approximate local prices.",
+      "countryLabel": "Country",
+      "countryPlaceholder": "Country",
+      "recommended": "Recommended",
+      "tiers": {
+        "quick": "A fast read: fewer runs, one audience.",
+        "standard": "The balanced choice for most tests.",
+        "full": "Most runs, all scenarios, up to three named audiences."
+      },
+      "extraPlatform": "+{price} per extra platform",
+      "runs": "Up to {count} simulation runs",
+      "scenarios": "{count} scenarios",
+      "agents": "{count} virtual customers · {archetypes} customer types",
+      "audiences": "{count, plural, =1 {1 audience} other {Up to # audiences}}",
+      "start": "Start a test",
+      "unavailable": "Prices are temporarily unavailable.",
+      "trialTitle": "Free first test",
+      "trialBody": "Your first test is free on the Standard tier after you verify your e-mail. No card required.",
+      "methodsTitle": "Payment methods",
+      "methodsBody": "Card payments through Stripe. In Myanmar you can pay by bank or mobile wallet transfer with a payment code; an admin confirms the order, usually within a few hours."
+    },
+    "how": {
+      "title": "How it works",
+      "intro": "ADVAR simulates how a virtual audience reacts to your ad. Here is what happens between upload and report.",
+      "sections": {
+        "profile": {
+          "title": "Business Profile",
+          "body": "You describe your business once: what you sell, your customers, your reputation. Presets are versioned so every test records exactly what it used."
+        },
+        "ad": {
+          "title": "Your ad",
+          "body": "Upload an image or short video with caption, headline and call to action. The system reads the ad: hook, offer, visual quality and trust signals."
+        },
+        "audience": {
+          "title": "Audience",
+          "body": "Country, locations, language groups, ages, gender and interests. The virtual population is built from country data and your profile."
+        },
+        "simulation": {
+          "title": "Simulation",
+          "body": "Thousands of virtual customers with different patience, skepticism and price sensitivity see the ad across scenarios like payday or a rainy weekend. Runs repeat until the estimate stabilises."
+        },
+        "report": {
+          "title": "Report",
+          "body": "Score, funnel, comments, segments, brand relationship, timing and blockers, each with the evidence behind it. A PDF matches the web report."
+        },
+        "honesty": {
+          "title": "Honest by design",
+          "body": "The report states what happened and why. It never tells you what to change. New businesses are simulated as new businesses."
+        }
+      },
+      "cta": "Start a free test"
+    },
+    "legal": {
+      "title": "Terms and privacy",
+      "updated": "Last updated: 27 September 2026",
+      "termsTitle": "Terms of service",
+      "privacyTitle": "Privacy",
+      "terms": {
+        "service": {
+          "title": "The service",
+          "body": "ADVAR provides simulated audience reactions to advertising material. Results are estimates produced by a model and are not guarantees of real-world performance."
+        },
+        "simulation": {
+          "title": "Simulation results",
+          "body": "Scores, funnels, comments and reasons are generated by virtual audiences. You remain responsible for decisions taken on the basis of a report."
+        },
+        "payments": {
+          "title": "Payments",
+          "body": "Tests are paid per run. Card payments are processed by Stripe. Manual transfers are confirmed by our team; unconfirmed orders expire after 48 hours."
+        },
+        "cancel": {
+          "title": "Cancelling a test",
+          "body": "A test can be cancelled while it is preparing, before results start. The first cancellation allows one free restart of the same test; a second cancellation requires a new payment."
+        },
+        "accounts": {
+          "title": "Accounts",
+          "body": "You must keep your login details safe. We may block accounts that abuse the free trial or the service."
+        }
+      },
+      "privacy": {
+        "data": {
+          "title": "What we store",
+          "body": "Your account details, Business Profiles, ads and reports. Reports are kept so you can compare versions over time."
+        },
+        "media": {
+          "title": "Ad media",
+          "body": "Uploaded images and videos are stored to run the simulation and generate the report. Frames may be sent to an AI provider for analysis."
+        },
+        "payments": {
+          "title": "Payment data",
+          "body": "We never see your card number. For manual transfers we store the payment code, amount and the reference you provide."
+        },
+        "retention": {
+          "title": "Retention and deletion",
+          "body": "You can delete your account from Settings. Personal data is removed; anonymised aggregate statistics may be kept."
+        },
+        "contact": {
+          "title": "Contact",
+          "body": "Questions about your data can be sent to the address shown on the invoice or receipt."
+        }
+      }
+    }
+  },
+  "auth": {
+    "meta": {
+      "login": "Log in",
+      "register": "Create account",
+      "verifyEmail": "Verify e-mail",
+      "forgotPassword": "Forgot password",
+      "resetPassword": "Reset password"
+    },
+    "fields": {
+      "email": "E-mail",
+      "password": "Password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password",
+      "passwordHelp": "At least 8 characters.",
+      "name": "Your name",
+      "country": "Country",
+      "countryHelp": "Sets your local currency display and available payment methods. You can change it later.",
+      "countryPlaceholder": "Choose a country"
+    },
+    "login": {
+      "title": "Log in",
+      "description": "Welcome back.",
+      "forgot": "Forgot password?",
+      "submit": "Log in",
+      "noAccount": "No account yet?",
+      "register": "Create one"
+    },
+    "register": {
+      "title": "Create your account",
+      "description": "Your first test is free after you verify your e-mail.",
+      "terms": "I agree to the <link>terms and privacy policy</link>.",
+      "submit": "Create account",
+      "haveAccount": "Already have an account?",
+      "login": "Log in",
+      "checkEmailTitle": "Check your e-mail",
+      "checkEmailBody": "We sent a verification link to {email}.",
+      "verificationSent": "Verification e-mail sent",
+      "goLogin": "Go to login",
+      "resend": "Resend e-mail",
+      "resent": "Sent again"
+    },
+    "verify": {
+      "title": "Verify your e-mail",
+      "verifying": "Verifying your e-mail…",
+      "doneTitle": "E-mail verified",
+      "doneBody": "Your free trial is now available.",
+      "goDashboard": "Go to dashboard",
+      "goLogin": "Log in",
+      "failed": "This verification link is invalid or has expired. Enter your e-mail to get a new one.",
+      "resendIntro": "Enter your e-mail and we will send a new verification link.",
+      "email": "E-mail",
+      "resend": "Send verification link",
+      "resent": "Sent. Check your inbox."
+    },
+    "forgot": {
+      "title": "Forgot your password?",
+      "description": "Enter your e-mail and we will send a reset link.",
+      "submit": "Send reset link",
+      "sent": "If an account exists for this e-mail, a reset link is on its way.",
+      "backToLogin": "Back to login",
+      "done": "",
+      "missingToken": ""
+    },
+    "reset": {
+      "title": "Choose a new password",
+      "description": "Enter a new password for your account.",
+      "missingToken": "This reset link is missing its token. Request a new link from the login page.",
+      "submit": "Set new password",
+      "done": "Your password was changed. You can log in now.",
+      "backToLogin": "Back to login",
+      "sent": ""
+    }
+  },
+  "dashboard": {
+    "title": "Hello {name}",
+    "description": "Your tests, drafts and results.",
+    "newTest": "New test",
+    "yourTests": "Your tests",
+    "filterStatus": "Filter by status",
+    "allStatuses": "All statuses",
+    "emptyTitle": "No tests yet",
+    "emptyBody": "Create your first test: upload an ad, describe your audience and watch the simulation.",
+    "emptyFiltered": "No tests with this status.",
+    "progress": "{pct}% complete",
+    "trialTitle": "Your first test is free",
+    "trialBody": "The Standard tier is included once. No card needed.",
+    "trialCta": "Start free test",
+    "verifyTitle": "Verify your e-mail",
+    "verifyBody": "The free trial needs a verified e-mail address.",
+    "verifyResend": "Resend verification",
+    "verifySent": "Verification e-mail sent",
+    "verifySentShort": "Sent"
+  },
+  "profiles": {
+    "title": "Business Profiles",
+    "description": "Presets that describe your business. Every test records the version it used.",
+    "new": "New profile",
+    "emptyTitle": "No Business Profile yet",
+    "emptyBody": "Create a profile to describe what you sell, your customers and your reputation. Tests use it to build the virtual audience.",
+    "default": "Default",
+    "actions": "Actions",
+    "edit": "Edit",
+    "duplicate": "Duplicate as new preset",
+    "archive": "Archive",
+    "archived": "Profile archived",
+    "duplicated": "Profile duplicated",
+    "copyName": "{name} (copy)",
+    "archiveTitle": "Archive {name}?",
+    "archiveBody": "Archived presets are hidden from the wizard. Tests keep their snapshots.",
+    "version": "Version",
+    "lastUsed": "Last used",
+    "tests": "Tests",
+    "newTitle": "New Business Profile",
+    "newDescription": "Choose a category; the questions come from that category's template.",
+    "editTitle": "Edit {name}",
+    "editDescription": "Saving creates version {version} + 1. Tests keep the version they used.",
+    "back": "Back",
+    "create": "Create profile",
+    "saveVersion": "Save new version",
+    "created": "Profile created",
+    "saved": "New version saved",
+    "defaultChangeNote": "Edited in the profile editor",
+    "presetTitle": "Preset",
+    "pickCategoryFirst": "Pick a category to load the questions.",
+    "fields": {
+      "name": "Preset name",
+      "nameHelp": "For example “Dine-in main” or “Delivery-only”.",
+      "category": "Category",
+      "categoryHelp": "The category decides which questions you answer.",
+      "categoryLocked": "The category cannot change after creation; duplicate the preset instead.",
+      "categoryPlaceholder": "Choose a category",
+      "isDefault": "Use as default preset for new tests",
+      "changeNote": "Change note",
+      "changeNoteHelp": "Optional: what changed in this version."
+    },
+    "history": {
+      "title": "Version history",
+      "current": "Current",
+      "noTests": "No tests used this version."
+    },
+    "form": {
+      "choose": "Choose…",
+      "yes": "Yes",
+      "no": "No",
+      "providedByYou": "Provided by you",
+      "newBusinessHint": "Low numbers are fine: new businesses are simulated honestly as new businesses.",
+      "sections": {
+        "basics": {
+          "title": "Business basics",
+          "description": "Name and type of business."
+        },
+        "sell": {
+          "title": "What you sell",
+          "description": "Products, services, price level and what makes them distinctive."
+        },
+        "customers": {
+          "title": "Your customers",
+          "description": "Who buys from you and which languages they use."
+        },
+        "reputation": {
+          "title": "Reputation",
+          "description": "Followers, ratings and reviews shape how many virtual customers already know you."
+        },
+        "notes": {
+          "title": "Brand notes",
+          "description": "Optional: anything else about the brand, tone or promise."
+        }
+      }
+    }
+  },
+  "payments": {
+    "title": "Payments",
+    "description": "Payment history, receipts and orders awaiting approval.",
+    "awaitingApproval": "{count, plural, =1 {1 order is} other {# orders are}} awaiting approval.",
+    "emptyTitle": "No payments yet",
+    "emptyBody": "Payments appear here after you run a test.",
+    "date": "Date",
+    "method": "Method",
+    "amount": "Amount",
+    "status": "Status",
+    "reference": "Code / reference",
+    "test": "Test",
+    "openTest": "Open test",
+    "testMode": "test mode",
+    "methods": {
+      "trial": "Free trial",
+      "stripe": "Card",
+      "manual": "Bank / wallet transfer"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Profile, language, password and account.",
+    "save": "Save",
+    "profile": {
+      "title": "Profile",
+      "name": "Name",
+      "country": "Country",
+      "countryHelp": "Used for local price display and payment methods.",
+      "countryPlaceholder": "Choose a country",
+      "saved": "Profile saved"
+    },
+    "language": {
+      "title": "Interface language",
+      "description": "Separate from the target country of a test.",
+      "label": "Language",
+      "note": "More languages are added as message files become available."
+    },
+    "password": {
+      "title": "Password",
+      "description": "Change the password you use to log in.",
+      "current": "Current password",
+      "new": "New password",
+      "confirm": "Confirm new password",
+      "submit": "Change password",
+      "changed": "Password changed",
+      "fallback": "Password change is not available on this server yet. We can e-mail you a reset link instead.",
+      "sendReset": "Send me a reset link",
+      "resetSent": "Reset link sent"
+    },
+    "delete": {
+      "title": "Delete account",
+      "description": "Removes your account and personal data. Reports are anonymised.",
+      "button": "Delete my account",
+      "confirmTitle": "Delete your account?",
+      "confirmBody": "This cannot be undone. You will be logged out immediately."
+    }
+  },
+  "testSummary": {
+    "ad": "Ad",
+    "preset": "Business Profile",
+    "audience": "Audience",
+    "platforms": "Platforms and schedule",
+    "edit": "Edit",
+    "cta": "CTA",
+    "mediaCount": "{count, plural, =1 {1 media file} other {# media files}}",
+    "mediaVideo": "Ad video",
+    "noCaption": "No caption",
+    "editedForThisAd": "edited for this ad",
+    "noPreset": "No preset chosen yet",
+    "country": "Country",
+    "goal": "Goal",
+    "tier": "Tier",
+    "noPlatforms": "No platforms chosen yet",
+    "organicSchedule": "Posts at {at}, observed for {days, plural, =1 {1 day} other {# days}}",
+    "paidSchedule": "Starts {date}, runs {days, plural, =1 {1 day} other {# days}}",
+    "budget": "Budget",
+    "price": "Price"
+  },
+  "testOverview": {
+    "continueConfirm": "Continue to confirm",
+    "continueEditing": "Continue editing",
+    "goCheckout": "Go to checkout",
+    "paymentStatus": "Payment status",
+    "watchLive": "Watch live",
+    "viewReport": "View report",
+    "runAgainFree": "Run again for free",
+    "open": "Open",
+    "duplicateEdit": "Duplicate and edit",
+    "delete": "Delete draft",
+    "deleteTitle": "Delete this draft?",
+    "deleteBody": "The draft and its uploaded media are removed.",
+    "duplicated": "Test duplicated",
+    "editedForThisAd": "edited for this ad",
+    "freeRestartTitle": "Free restart available",
+    "freeRestartBody": "You cancelled before results started. Fix your inputs and restart once for free.",
+    "restart": "Restart",
+    "secondCancel": "This test was cancelled twice; a new payment is needed to run it again.",
+    "failedTitle": "The test failed",
+    "failedBody": "Something went wrong during the simulation.",
+    "runningNote": "Running: {pct}% · {label}",
+    "feedPreview": "Feed preview"
+  },
+  "testTitle": {
+    "edit": "Edit title",
+    "save": "Save title",
+    "cancel": "Cancel",
+    "hint": "Double-click to edit",
+    "empty": "Title can't be empty",
+    "tooLong": "Title must be {max} characters or fewer",
+    "failed": "Couldn't save the title. Try again."
+  },
+  "wizard": {
+    "title": "New test",
+    "editTitle": "Edit: {title}",
+    "description": "Preset → Ad → Audience → Platforms → Preview. The draft is saved after every step.",
+    "stepsLabel": "Wizard steps",
+    "steps": {
+      "preset": {
+        "title": "Preset",
+        "subtitle": "choose profile"
+      },
+      "ad": {
+        "title": "Ad",
+        "subtitle": "upload/copy"
+      },
+      "audience": {
+        "title": "Audience",
+        "subtitle": "who/where"
+      },
+      "platforms": {
+        "title": "Platforms",
+        "subtitle": "schedule/budget"
+      },
+      "preview": {
+        "title": "Preview",
+        "subtitle": "feed mock-up"
+      }
+    },
+    "back": "Back",
+    "next": "Next",
+    "looksGood": "Looks good",
+    "saveExit": "Save and exit",
+    "draftSavedLocally": "Draft saved on this device",
+    "notEditable": "This test has started and can no longer be edited. Duplicate it to make changes.",
+    "openTest": "Open test",
+    "creating": {
+      "test": "Creating your draft…",
+      "profile": "Attaching the Business Profile…",
+      "uploading": "Uploading media {n} of {total}…"
+    },
+    "preset": {
+      "emptyTitle": "Create a Business Profile first",
+      "emptyBody": "The wizard needs a preset that describes your business.",
+      "createProfile": "Create new profile",
+      "default": "Default",
+      "editForThisAd": "Edit for this ad",
+      "editedForThisAd": "{count, plural, =1 {1 change for this ad} other {# changes for this ad}}",
+      "required": "Choose a Business Profile preset to continue.",
+      "invalid": "The profile is missing required answers: {fields}",
+      "saved": "Profile changes saved",
+      "editDialog": {
+        "title": "Edit {name} for this ad",
+        "description": "Change the answers; you decide how to save them in the next step.",
+        "howToSave": "How do you want to save?",
+        "howToSaveBody": "The test always records the exact version it used.",
+        "continue": "Continue",
+        "back": "Back",
+        "cancel": "Cancel",
+        "save": "Save",
+        "newPresetName": "New preset name",
+        "newPresetDefault": "{name} (variant)",
+        "modes": {
+          "one_time": {
+            "title": "Use for this ad only",
+            "body": "Changes are stored only in this test's snapshot; the preset is unchanged."
+          },
+          "update_preset": {
+            "title": "Update preset",
+            "body": "Creates a new version of the preset, used by default from now on."
+          },
+          "new_preset": {
+            "title": "Save as new preset",
+            "body": "Creates a new preset and links this test to it."
+          }
+        }
+      }
+    },
+    "ad": {
+      "mediaTitle": "Media",
+      "mediaBody": "Image (JPG, PNG, WebP) or video (MP4, MOV). At least one file.",
+      "mediaRequired": "Add at least one image or video.",
+      "queuedNote": "Files upload when the draft is created at the Audience step.",
+      "copyTitle": "Copy",
+      "copyBody": "What customers read. The caption is cut at “See more” after 125 characters in feeds.",
+      "fields": {
+        "title": "Test title (internal)",
+        "titleHelp": "Only you see this name.",
+        "caption": "Primary text (caption)",
+        "captionHelp": "Up to 2,200 characters.",
+        "headline": "Headline",
+        "headlineHelp": "Short line shown next to the button.",
+        "cta": "Call-to-action button",
+        "link": "Link (optional)",
+        "linkHelp": "Where the button leads. Only the host is shown in previews."
+      },
+      "cta": {
+        "learn_more": "Learn more",
+        "shop_now": "Shop now",
+        "send_message": "Send message",
+        "order_now": "Order now",
+        "sign_up": "Sign up",
+        "book_now": "Book now",
+        "get_offer": "Get offer",
+        "none": "No button"
+      }
+    },
+    "audience": {
+      "countryTitle": "Target country",
+      "countryBody": "Decides the population, languages, currency and payment methods.",
+      "countryLocked": "The country is fixed once the draft exists. Duplicate the test to change it.",
+      "audienceTitle": "Audience",
+      "audienceN": "Audience {n}",
+      "audienceBody": "Who should see the ad and where.",
+      "addAudience": "Add another audience",
+      "removeAudience": "Remove audience",
+      "fullTierNote": "More than one audience needs the Full tier; the checkout selects it automatically.",
+      "pickCountryFirst": "Pick a country first.",
+      "fields": {
+        "country": "Country",
+        "countryPlaceholder": "Choose a country",
+        "name": "Audience name",
+        "kind": "Kind",
+        "kindHelp": "Followers: people who already follow you.",
+        "location": "Locations",
+        "locationHelp": "City, district or area (comma-separated).",
+        "radius": "Radius (km)",
+        "radiusHelp": "Optional.",
+        "age": "Age {min}–{max}",
+        "ageMin": "Minimum age",
+        "ageMax": "Maximum age",
+        "genders": "Gender",
+        "languages": "Language groups",
+        "languagesHelp": "Defaults from the country and your profile.",
+        "interests": "Interests",
+        "interestsHelp": "Press Enter after each interest.",
+        "interestsPlaceholder": "e.g. street food, K-pop, fitness",
+        "audienceSize": "Estimated audience size (optional)",
+        "audienceSizeHelp": "Real people in the target pool; the simulation scales to it."
+      },
+      "kinds": {
+        "targeted": "Targeted",
+        "followers": "Followers",
+        "custom": "Custom list"
+      },
+      "genders": {
+        "f": "Women",
+        "m": "Men",
+        "other": "Other"
+      }
+    },
+    "platforms": {
+      "postTypeTitle": "Post type",
+      "postTypeBody": "How the post reaches people.",
+      "postTypes": {
+        "paid": {
+          "title": "Paid ad",
+          "body": "Shown to a targeted audience with a budget and schedule."
+        },
+        "boosted": {
+          "title": "Boosted post",
+          "body": "A page post with paid reach on top of followers."
+        },
+        "organic": {
+          "title": "Organic post",
+          "body": "No budget: reach comes from followers and shares."
+        }
+      },
+      "platformsTitle": "Platforms and placements",
+      "platformsBody": "Choose up to three platforms. The first is included; each extra platform adds to the price.",
+      "placementsCount": "{count, plural, =1 {1 placement} other {# placements}}",
+      "notForPostType": "Not available for this post type",
+      "placementsFor": "Placements for {platform}",
+      "shareFor": "Budget share for {platform}",
+      "sharesTotal": "Shares add up to {total}%",
+      "errors": {
+        "platform_required": "Choose at least one platform.",
+        "shares_total": "Budget shares must add up to 100%.",
+        "placement_required": "Choose at least one placement."
+      },
+      "goalTitle": "Goal",
+      "goalBody": "Only goals supported by every chosen platform are available.",
+      "goalNotSupported": "Not supported by a chosen platform",
+      "goals": {
+        "sales": {
+          "title": "Sales",
+          "body": "Purchases and orders"
+        },
+        "messages": {
+          "title": "Messages",
+          "body": "Chats started"
+        },
+        "traffic": {
+          "title": "Traffic",
+          "body": "Clicks to your link"
+        },
+        "awareness": {
+          "title": "Awareness",
+          "body": "People who noticed the ad"
+        },
+        "engagement": {
+          "title": "Engagement",
+          "body": "Reactions, comments, shares"
+        }
+      },
+      "scheduleTitle": "Schedule and budget",
+      "scheduleBody": "Start date, duration and total budget.",
+      "organicScheduleTitle": "Post time and observation",
+      "organicScheduleBody": "When the post goes live and how long we observe it.",
+      "fields": {
+        "startDate": "Start date",
+        "days": "Duration (days)",
+        "daysHelp": "1–14 days.",
+        "budget": "Total budget ({currency})",
+        "budgetHelp": "For the whole campaign, in your local currency.",
+        "postAt": "Post time",
+        "observeDays": "Observation window (days)",
+        "observeDaysHelp": "1–7 days."
+      },
+      "priceLine": "{tier} tier · {platforms, plural, =1 {1 platform} other {# platforms}}",
+      "extraPlatform": "+{price} per extra platform",
+      "tierNote": "You choose the tier at checkout. The price shown is for the current tier."
+    },
+    "preview": {
+      "intro": "One preview per platform and placement. Neutral colours, generic icons; “See more” shows where your caption is cut.",
+      "noPlatforms": "Choose platforms first.",
+      "yourPage": "Your page"
+    },
+    "upload": {
+      "dropzoneLabel": "Upload media",
+      "dropTitle": "Drag and drop or tap to choose",
+      "dropHelp": "Images up to {image} MB (JPG, PNG, WebP) · videos up to {video} MB and {seconds} s (MP4, MOV)",
+      "remove": "Remove",
+      "queued": "Ready to upload",
+      "uploading": "Uploading {pct}%",
+      "videoPreview": "Video preview",
+      "errors": {
+        "type": "Only JPG, PNG, WebP images or MP4/MOV videos.",
+        "image_size": "Images must be {image} MB or smaller.",
+        "video_size": "Videos must be {video} MB or smaller.",
+        "video_length": "Videos must be {seconds} seconds or shorter."
+      }
+    }
+  },
+  "preview": {
+    "label": "Preview ({platform}-style · {placement})",
+    "beta": "Beta",
+    "sponsored": "Sponsored",
+    "justNow": "Just now",
+    "seeMore": "See more",
+    "seeLess": "See less",
+    "like": "Like",
+    "comment": "Comment",
+    "share": "Share",
+    "yourAd": "Your ad",
+    "originalAudio": "Original audio",
+    "soundOn": "Sound on",
+    "specRatio": "{ratio}",
+    "specCropped": "{ratio} — shown with bars or cropped on {platform}",
+    "captionChars": "Caption {count} / {max} chars",
+    "videoLong": "Video {seconds} s — max {max} s here",
+    "sample": {
+      "friend1": "Mya's Kitchen",
+      "text1": "Weekend special is back. Come hungry.",
+      "friend2": "Ko Aung",
+      "text2": "Anyone knows a good tailor near downtown?",
+      "friend3": "City Updates",
+      "text3": "Road works on Main Street until Friday.",
+      "friend4": "Thida",
+      "text4": "Sunset from the office roof today."
+    }
+  },
+  "confirm": {
+    "title": "Confirm your test",
+    "description": "Everything below is what the simulation will use. Nothing is charged yet.",
+    "recheck": "Re-check",
+    "blockingTitle": "Some inputs are missing",
+    "fixInputs": "Fix inputs",
+    "specChecks": "Spec checks",
+    "duplicateTitle": "You already tested this exact ad",
+    "duplicateBody": "Tested on {date} · Score {score}. Change something before running it again.",
+    "viewResult": "View result",
+    "duplicateHint": "Continue stays disabled until something changes.",
+    "closeMatch": "Compared with your test on {date}: {fields} changed.",
+    "engineUpdated": "Our engine was updated since your last run of this ad. Results may differ.",
+    "iChecked": "I have checked my inputs",
+    "continueCheckout": "Continue to checkout",
+    "notConfirmable": "This test is already past the confirm step.",
+    "openTest": "Open test",
+    "fields": {
+      "caption": "caption",
+      "headline": "headline",
+      "cta": "CTA",
+      "budget": "budget",
+      "media": "media",
+      "platforms": "platforms",
+      "audiences": "audiences",
+      "schedule": "schedule",
+      "profile": "profile",
+      "goal": "goal",
+      "post_type": "post type",
+      "tier": "tier"
+    }
+  },
+  "checkout": {
+    "title": "Checkout",
+    "description": "Choose a tier and a payment method. The price includes your chosen platforms.",
+    "needsConfirm": "Confirm the test before checkout.",
+    "goConfirm": "Go to confirm",
+    "alreadyPaid": "This test is already paid.",
+    "openTest": "Open test",
+    "testModeBanner": "Payments run in {mode} mode: no real money moves.",
+    "modeMock": "mock",
+    "duplicateTitle": "Duplicate test",
+    "backToConfirm": "Back to confirm",
+    "methods": {
+      "card": "Card",
+      "manual": "Local bank transfer / QR",
+      "trial": "Free trial"
+    },
+    "trial": {
+      "title": "Your first test is free",
+      "body": "{tier} tier included. No card needed.",
+      "note": "The trial applies once per account.",
+      "run": "Run free test",
+      "verifyTitle": "Verify your e-mail to use the free trial",
+      "verifyBody": "Check your inbox for the verification link.",
+      "resend": "Resend link",
+      "resent": "Sent",
+      "onlyTier": "The free trial applies to the {tier} tier.",
+      "switchTo": "Switch to {tier}"
+    },
+    "tiers": {
+      "title": "Tier",
+      "recommended": "Recommended",
+      "firstIncluded": "First platform included",
+      "includesExtra": "Includes {count, plural, =1 {1 extra platform} other {# extra platforms}} at {price} each",
+      "runs": "Up to {count} runs",
+      "scenarios": "{count} scenarios",
+      "audiences": "{count, plural, =1 {1 audience} other {Up to # audiences}}",
+      "tooFewAudiences": "Not enough audiences for this test"
+    },
+    "card": {
+      "title": "Pay with card",
+      "body": "You will be redirected to a secure Stripe page.",
+      "pay": "Pay with card",
+      "confirming": "Confirming payment…",
+      "confirmingBody": "This usually takes a few seconds.",
+      "slow": "Payment received, confirmation is taking longer than usual. We will e-mail you when the test starts.",
+      "cancelled": "The card payment was cancelled. You can try again or choose another method."
+    },
+    "manual": {
+      "title": "Pay by bank or mobile wallet",
+      "body": "We create an order with a fixed amount and a payment code. Transfer the amount and send us the proof.",
+      "pay": "Pay manually",
+      "created": "Order created",
+      "previousCancelled": "Your previous order was cancelled",
+      "previousExpired": "Your previous order expired",
+      "startNew": "You can start a new order.",
+      "waitingTitle": "Waiting for payment confirmation",
+      "waitingBody": "Usually within 2 hours, 9:00–21:00. We e-mail you when it is approved.",
+      "expiredTitle": "This order expired",
+      "expiredBody": "Orders expire after 48 hours without approval. Start a new order to continue.",
+      "expiresIn": "Expires in {time}",
+      "expiresAt": "Expires {date}",
+      "amountTitle": "Amount to transfer",
+      "amountBody": "Transfer exactly this amount.",
+      "copyAmount": "Copy amount",
+      "usdEquivalent": "= {usd} at {rate} per USD",
+      "paymentCode": "Payment code",
+      "copyCode": "Copy code",
+      "codeHint": "Put this code in the transfer note and in your message to us.",
+      "accountsTitle": "Our accounts",
+      "copyAccount": "Copy number",
+      "detailsUnavailable": "Account details were shown when the order was created. Contact us with your payment code if you need them again.",
+      "proofTitle": "Send the proof",
+      "proofBody": "Send a screenshot of the transfer with your payment code to one of our pages."
+    },
+    "summary": {
+      "title": "Order summary",
+      "ad": "Ad",
+      "tier": "Tier",
+      "platforms": "Platforms",
+      "method": "Method",
+      "total": "Total",
+      "free": "Free",
+      "review": "Review inputs"
+    }
+  },
+  "live": {
+    "thumbnail": "Ad thumbnail",
+    "connected": "Live",
+    "reconnecting": "Reconnecting…",
+    "preparing": "Preparing…",
+    "queued": "Your test is queued and will start shortly.",
+    "notStarted": "This test has not started yet.",
+    "notStartedReview": "Waiting for payment approval. The live screen opens when the test starts.",
+    "progress": "{pct}% complete",
+    "runsOf": "Run {done} of {target}",
+    "confidenceLabel": "Confidence",
+    "confidence": {
+      "low": "low",
+      "building": "building",
+      "medium": "good",
+      "high": "high"
+    },
+    "scoreTitle": "Provisional score",
+    "scoreRange": "Range {range}",
+    "scoreWaiting": "The score appears when the first runs finish.",
+    "goalEstimate": "{goal}: {range}",
+    "breakdown": "By platform and audience",
+    "closeTabNote": "Closing this tab does not stop the test. The dashboard shows progress and we e-mail you when it is done.",
+    "openReport": "Open report",
+    "revealRuns": "{runs} runs complete",
+    "revealNodes": {
+      "advar": "AdVar",
+      "engine": "Virtual Engine",
+      "ad": "Your Ad",
+      "score": "Final Score"
+    },
+    "reveal": "{runs} runs complete · Final score {score} · Confidence {confidence}",
+    "stages": {
+      "label": "Simulation stages",
+      "analysing": "Analysing ad",
+      "analysingShort": "Ad",
+      "audience": "Building audience",
+      "audienceShort": "Audience",
+      "reacting": "Customers reacting",
+      "reactingShort": "Reacting",
+      "simulating": "Running simulations",
+      "simulatingShort": "Runs",
+      "reasons": "Writing reasons",
+      "reasonsShort": "Reasons"
+    },
+    "cancel": {
+      "button": "Cancel and edit",
+      "until": "Available until results start",
+      "title": "Cancel this test?",
+      "body": "The test stops and returns to draft. You can fix your inputs and restart once for free.",
+      "confirm": "Cancel test",
+      "closed": "Results have started; this test can no longer be cancelled."
+    },
+    "failed": {
+      "title": "The test could not finish",
+      "body": "Something went wrong while running your test. Please try again.",
+      "runAgain": "Try again"
+    },
+    "chart": {
+      "title": "Click rate converging",
+      "waiting": "The chart starts after the first runs.",
+      "caption": "P10–P90 band and median click rate by runs done; the band narrows as runs accumulate.",
+      "aria": "Click rate after {runs} runs, median {p50}",
+      "run": "Run {n}",
+      "range": "P10–P90",
+      "median": "Median"
+    },
+    "funnel": {
+      "title": "Funnel",
+      "seen": "Seen",
+      "skipped": "Skipped",
+      "stopped": "Stopped",
+      "reacted": "Reacted",
+      "commented": "Commented",
+      "clicked": "Clicked",
+      "bought": "Bought",
+      "messaged": "Messaged"
+    },
+    "feed": {
+      "title": "Run feed",
+      "label": "Run batches",
+      "waiting": "Runs appear here as batches finish.",
+      "run": "Run {n}",
+      "runs": "Runs {from}–{to}",
+      "audience": "Audience {n}",
+      "score": "score",
+      "ctr": "CTR"
+    },
+    "comments": {
+      "title": "Live comments",
+      "label": "Virtual comments",
+      "waiting": "Comments appear when customers start reacting.",
+      "speaking": "{group}-speaking"
+    }
+  },
+  "topics": {
+    "price": "Price",
+    "product_detail": "Product",
+    "service": "Service",
+    "positive": "Positive",
+    "negative": "Negative",
+    "other": "Other",
+    "questionsNote": "Questions are comments about price, product details or service."
+  },
+  "report": {
+    "notReady": "The report is ready when the test completes.",
+    "openTest": "Open test",
+    "scoreRange": "Range {range}",
+    "confidence": "Confidence {label} · {runs} runs",
+    "confidenceLabels": {
+      "building": "building",
+      "medium": "good",
+      "high": "high"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "stats": "Statistics",
+      "audience": "Audience",
+      "feedback": "Feedback",
+      "timing": "Timing & platforms",
+      "details": "Details"
+    },
+    "organicNote": "Organic post: reach comes from followers and shares, not from a budget.",
+    "presetUsed": "Preset {name} · v{version}",
+    "editedForThisAd": "edited for this ad",
+    "downloadPdf": "Download PDF",
+    "pdfPending": "The PDF is being generated.",
+    "duplicateEdit": "Duplicate and edit",
+    "compare": "Compare",
+    "showingFor": "Showing details for",
+    "audienceN": "Audience {n}",
+    "key": {
+      "reach": "Reach",
+      "clicks": "Clicks",
+      "purchases": "Purchases",
+      "messages": "Messages"
+    },
+    "metrics": {
+      "score": "Score",
+      "goal": "{goal}",
+      "reach": "Reach",
+      "stopRate": "Stop rate",
+      "ctr": "Click rate",
+      "goalRate": "Goal rate"
+    },
+    "sections": {
+      "funnel": "Funnel with reasons",
+      "funnelBody": "Median counts per run; estimated people scale to your audience size.",
+      "reaction": "Ad image and caption",
+      "topics": "Comment topics",
+      "topicsBody": "Average comments per run by topic.",
+      "comments": "Latest comments",
+      "commentsBody": "Virtual comments in English with a language-group label.",
+      "segments": "Who reacted",
+      "segmentsBody": "Rates by segment; strongest and weakest with reasons.",
+      "brand": "Brand relationship",
+      "brandBody": "Reach and results by how well people already know you.",
+      "taste": "Taste and familiarity",
+      "timing": "Timing",
+      "buyers": "Buyers vs. non-buyers",
+      "messagers": "Messagers vs. non-messagers",
+      "buyersBody": "Why clickers did not convert, as shares of blocked purchases.",
+      "audiences": "Audience comparison",
+      "audiencesBody": "Same metrics side by side for each audience.",
+      "platforms": "Platform comparison",
+      "platformsBody": "Same metrics side by side per platform.",
+      "allReasons": "All reasons",
+      "method": "Method note"
+    },
+    "method": {
+      "runs": "Runs",
+      "scenarios": "Scenarios",
+      "population": "Population per platform",
+      "scale": "(scaled ×{scale} to your audience)",
+      "country": "Country",
+      "languageGroups": "Language groups",
+      "versions": "Settings versions",
+      "engine": "Engine version",
+      "cost": "AI cost",
+      "llmCalls": "calls"
+    },
+    "evidence": {
+      "why": "Why?",
+      "confidence": "Confidence {pct}%",
+      "none": "No evidence attached.",
+      "audience": "Audience {n}"
+    },
+    "funnel": {
+      "people": "people",
+      "everyoneReached": "Everyone your ad reached",
+      "shareOfReach": "{pct} of everyone who saw your ad",
+      "basedOn": "based on {n} simulated reactions"
+    },
+    "overview": {
+      "verdictTitle": "Verdict",
+      "verdict": {
+        "weak": "Weaker than most ads",
+        "below": "A little below average",
+        "average": "About average",
+        "good": "Better than most ads",
+        "strong": "A strong ad",
+        "none": "No score yet"
+      },
+      "verdictBody": {
+        "weak": "Most people scrolled past. Expect poor results from this version.",
+        "below": "It gets some attention, but less than a typical ad.",
+        "average": "It performs like a typical ad in your market.",
+        "good": "It stops more people than a typical ad.",
+        "strong": "It stands out and should do well against typical ads.",
+        "none": ""
+      },
+      "expectedTitle": "What you can expect",
+      "expectedBody": "Likely {goal}. The range shows a bad day and a good day.",
+      "per100Title": "Out of every 100 people who saw your ad",
+      "per100": "{n} of 100",
+      "stopped": "Stopped to look",
+      "clicked": "Clicked",
+      "bought": "Bought",
+      "messaged": "Sent a message",
+      "topBlocker": "Most common reason people who clicked did not go further: {reason} ({pct}).",
+      "reasonsTitle": "Why it scored this way"
+    },
+    "reaction": {
+      "imageTitle": "Ad image",
+      "impressed": "impressed",
+      "notImpressed": "not impressed",
+      "firstImpressions": "Top first impressions",
+      "captionTitle": "Caption",
+      "read": "read",
+      "ignored": "ignored",
+      "language": "Caption language: {language}",
+      "englishUsed": "English translation used for the simulation",
+      "hiddenTitle": "Hidden behind “See more”"
+    },
+    "topics": {
+      "insight": "{pct} of comments were questions the ad could answer.",
+      "perRun": "Counts are averages per run."
+    },
+    "comments": {
+      "filter": "Filter by topic",
+      "all": "All",
+      "none": "No comments for this topic.",
+      "speaking": "{group}-speaking"
+    },
+    "segments": {
+      "dimension": "Segment dimension",
+      "dims": {
+        "age_band": "Age",
+        "gender": "Gender",
+        "familiarity": "Familiarity",
+        "patience": "Patience",
+        "skeptical": "Skepticism",
+        "reads_caption": "Reads caption",
+        "follower": "Follower",
+        "language_group": "Language group"
+      },
+      "chartAria": "Goal rate by {dimension}",
+      "seen": "seen",
+      "noData": "No segment data.",
+      "strongest": "Strongest segment",
+      "weakest": "Weakest segment"
+    },
+    "brand": {
+      "group": "Relationship",
+      "reach": "Reach",
+      "share": "Share",
+      "stopRate": "Stop rate",
+      "clickRate": "Click rate",
+      "buyRate": "Buy rate",
+      "groups": {
+        "unaware": "Never heard of the business",
+        "aware_not_tried": "Knows it, never tried",
+        "tried_liked": "Tried and liked",
+        "tried_disliked": "Tried and disliked",
+        "regular": "Regulars"
+      },
+      "newBrandNote": "With {followers} followers and {months} months in business, most virtual customers had never heard of you. That is simulated honestly, not as a penalty."
+    },
+    "taste": {
+      "tasteTitle": "Taste match",
+      "mismatchShare": "Share who saw the ad with a taste mismatch",
+      "matchStop": "Stop rate when taste matches",
+      "mismatchStop": "Stop rate when taste mismatches",
+      "mismatchNegative": "Negative share among mismatched",
+      "dimensions": "Dimensions",
+      "noTaste": "No taste dimensions for this category.",
+      "familiarityTitle": "Familiarity with the product",
+      "familiarity": {
+        "grew_up_with_it": "Grew up with it",
+        "tried_elsewhere": "Tried elsewhere",
+        "foreigner_likes_it": "Foreigner who likes it",
+        "never_tried": "Never tried"
+      },
+      "seen": "seen",
+      "stopped": "stopped",
+      "clicked": "clicked",
+      "noFamiliarity": "No familiarity data."
+    },
+    "timing": {
+      "noData": "No timing data.",
+      "hourTitle": "Stops by hour of day",
+      "hourAria": "Stops by hour, best hour {hour}",
+      "stops": "stops",
+      "bestHour": "Most attention around {hour}.",
+      "dayTitle": "Reach by day",
+      "dayAria": "Reach by day",
+      "dayN": "Day {n}",
+      "reach": "reach",
+      "first24h": "{pct} of reach happened in the first 24 hours.",
+      "fatigueTitle": "Fatigue by repeated views",
+      "viewN": "View {n}",
+      "fatiguePoint": "Stops drop sharply from the {n}th view.",
+      "noFatigue": "No clear fatigue point within the campaign.",
+      "frequency": "Average frequency {n}",
+      "watch": "Average watch time {s} s",
+      "offerAt": "offer visible at {s} s; {pct} left before it"
+    },
+    "blockers": {
+      "summary": "{clicked} clicked, {converted} converted ({pct}).",
+      "kinds": {
+        "price": "Price",
+        "shipping": "Shipping / delivery",
+        "size": "Size / quantity",
+        "trust": "Trust",
+        "relevance": "Not for me"
+      }
+    },
+    "platforms": {
+      "beta": "Beta",
+      "betaNote": "{names}: beta platform model; numbers are less calibrated."
+    }
+  },
+  "compare": {
+    "title": "Compare two versions",
+    "description": "Side by side: score, goal metric, rates and counts.",
+    "versionA": "Version A",
+    "versionB": "Version B",
+    "pick": "Choose a completed test",
+    "pickBoth": "Choose two completed tests to compare.",
+    "differences": "These tests differ in",
+    "metric": "Metric",
+    "delta": "B − A",
+    "counts": "{name} (count)",
+    "goal": "Goal: {name}",
+    "metrics": {
+      "score": "Score",
+      "stop_rate": "Stop rate",
+      "ctr": "Click rate",
+      "buy_rate": "Buy rate",
+      "message_rate": "Message rate",
+      "engagement_rate": "Engagement rate",
+      "reach_rate": "Reach rate",
+      "cvr": "Conversion rate",
+      "comment_rate": "Comment rate",
+      "share_rate": "Share rate"
+    },
+    "note": "Medians per run. Differences in inputs, settings or engine version can explain part of the change."
+  },
+  "admin": {
+    "common": {
+      "cancel": "Cancel",
+      "changeNote": "Change note",
+      "createDraft": "Create draft",
+      "draftNote": "Draft edited in admin",
+      "draftSaved": "Draft saved",
+      "history": "Version history",
+      "jsonHint": "Edit as JSON; the object is validated as you type.",
+      "jsonInvalid": "Invalid JSON",
+      "jsonObject": "The value must be a JSON object",
+      "noVersions": "No versions yet.",
+      "publish": "Publish",
+      "publishTitle": "Publish version {version}?",
+      "publishBody": "The published version is used by all new tests from now on.",
+      "published": "Published",
+      "publishedNote": "Published from admin",
+      "rollback": "Roll back",
+      "rollbackTitle": "Roll back to version {version}?",
+      "rollbackBody": "Creates a new published version with that content.",
+      "rollbackNote": "Rollback to v{version}",
+      "rolledBack": "Rolled back",
+      "saveDraft": "Save draft",
+      "view": "View",
+      "versionStatus": {
+        "draft": "Draft",
+        "published": "Published",
+        "archived": "Archived"
+      }
+    },
+    "sandbox": {
+      "button": "Sandbox preview",
+      "title": "Sandbox preview",
+      "body": "Runs a sample test with the draft settings and compares it with the published version. Mock LLM unless you choose the real one.",
+      "runs": "Runs",
+      "agents": "Virtual customers",
+      "realLlm": "Use real LLM",
+      "run": "Run",
+      "close": "Close",
+      "metric": "Metric",
+      "published": "Published",
+      "draft": "Draft",
+      "delta": "Delta",
+      "meta": "{ms} ms · {provider}",
+      "versions": "Versions"
+    },
+    "overview": {
+      "title": "Overview",
+      "description": "Revenue, AI cost, margin and orders.",
+      "period": "Period",
+      "days": "{count, plural, =1 {Today} other {Last # days}}",
+      "revenue": "Revenue",
+      "aiCost": "AI cost",
+      "llmToday": "Today {spend} of {cap} cap",
+      "margin": "Gross margin",
+      "tests": "Completed tests",
+      "failed": "{count} failed",
+      "pending": "Manual orders awaiting approval",
+      "openQueue": "Open queue",
+      "approval": "Average approval time",
+      "minutes": "{n} min",
+      "perDay": "Tests per day",
+      "noTests": "No tests in this period.",
+      "goTests": "All tests",
+      "goUsers": "Users"
+    },
+    "payments": {
+      "title": "Manual orders",
+      "description": "Oldest first. Search by the payment code the customer sent.",
+      "searchCode": "Payment code",
+      "search": "Search",
+      "status": "Status",
+      "statuses": {
+        "pending_review": "Awaiting approval",
+        "succeeded": "Approved",
+        "cancelled": "Cancelled",
+        "expired": "Expired",
+        "refunded": "Refunded",
+        "all": "All"
+      },
+      "shortcuts": "{count} pending on this page · keyboard: ↑↓ select, A approve, C cancel",
+      "emptyTitle": "No orders",
+      "emptyBody": "Nothing matches this filter.",
+      "platforms": "platforms",
+      "cols": {
+        "code": "Code",
+        "user": "User",
+        "test": "Test",
+        "amount": "Amount",
+        "created": "Created",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "waiting": "waiting {time}",
+      "approve": "Approve",
+      "cancel": "Cancel order",
+      "refund": "Refund",
+      "stripeLink": "Open in Stripe",
+      "done": {
+        "approve": "Order approved; the test is queued",
+        "cancel": "Order cancelled",
+        "refund": "Payment refunded"
+      },
+      "dialog": {
+        "reference": "Transaction reference (optional)",
+        "referenceHelp": "Bank or wallet transaction ID for the audit log.",
+        "reason": "Reason",
+        "close": "Close",
+        "approve": {
+          "title": "Approve order",
+          "body": "Approve {code} for {amount}? The customer is e-mailed and the test starts.",
+          "confirm": "Approve"
+        },
+        "cancel": {
+          "title": "Cancel order",
+          "body": "Cancel {code} ({amount})? The customer sees the reason and can start a new order.",
+          "confirm": "Cancel order"
+        },
+        "refund": {
+          "title": "Refund payment",
+          "body": "Refund {code} ({amount})? Stripe payments are refunded through Stripe; manual ones need your reference.",
+          "confirm": "Refund"
+        }
+      }
+    },
+    "tests": {
+      "title": "Tests",
+      "description": "Search and filter every test.",
+      "searchEmail": "User e-mail",
+      "search": "Search",
+      "status": "Status",
+      "all": "All",
+      "empty": "No tests match.",
+      "cols": {
+        "test": "Test",
+        "user": "User",
+        "status": "Status",
+        "score": "Score",
+        "cost": "AI cost",
+        "created": "Created"
+      }
+    },
+    "testDetail": {
+      "cancels": "{n} cancels",
+      "payments": "Payments",
+      "rerun": "Free re-run",
+      "rerunQueued": "Re-run queued",
+      "stages": "Stage log",
+      "noStages": "No stages recorded yet.",
+      "cost": "Cost breakdown",
+      "llmCalls": "{n} LLM calls",
+      "stage": "Stage",
+      "calls": "Calls",
+      "usd": "USD",
+      "errors": "Errors",
+      "payment": "Payment",
+      "versions": "Settings versions",
+      "audit": "Audit log",
+      "noAudit": "No audit entries."
+    },
+    "users": {
+      "title": "Users",
+      "description": "Search, block, reset trials.",
+      "search": "Search",
+      "searchPlaceholder": "E-mail or name",
+      "empty": "No users match.",
+      "cols": {
+        "user": "User",
+        "role": "Role",
+        "flags": "Flags",
+        "tests": "Tests",
+        "created": "Joined",
+        "actions": "Actions"
+      },
+      "blocked": "Blocked",
+      "unverified": "Unverified",
+      "trialUsed": "Trial used",
+      "deleted": "Deleted",
+      "block": "Block",
+      "unblock": "Unblock",
+      "resetTrial": "Reset trial",
+      "makeAdmin": "Make admin",
+      "makeUser": "Make user",
+      "done": "User updated",
+      "confirm": {
+        "block": {
+          "title": "Block {email}?",
+          "body": "The user cannot log in until unblocked."
+        },
+        "unblock": {
+          "title": "Unblock {email}?",
+          "body": "The user can log in again."
+        },
+        "reset_trial": {
+          "title": "Reset trial for {email}?",
+          "body": "The user gets another free test."
+        },
+        "make_admin": {
+          "title": "Make {email} an admin?",
+          "body": "Admins can approve payments and edit settings."
+        },
+        "make_user": {
+          "title": "Remove admin from {email}?",
+          "body": "The user keeps their tests."
+        }
+      }
+    },
+    "prices": {
+      "title": "Prices",
+      "description": "Per-tier prices in {currency} minor units (cents).",
+      "tier": "Tier",
+      "amount": "Amount (minor)",
+      "extra": "Extra platform (minor)",
+      "active": "Active",
+      "preview": "Display",
+      "amountFor": "Amount for {tier}",
+      "extraFor": "Extra platform price for {tier}",
+      "activeFor": "{tier} active",
+      "minorHint": "1200 = $12.00. The extra_platform row, when present, overrides per-tier extra prices.",
+      "changeNote": "Change note",
+      "defaultNote": "Prices updated in admin",
+      "save": "Save prices",
+      "saved": "Prices saved"
+    },
+    "settings": {
+      "title": "App settings",
+      "description": "Trial, rate limits, Myanmar payment accounts and social links.",
+      "updated": "Last updated {date}",
+      "trial": {
+        "title": "Free trial",
+        "body": "One free test per account.",
+        "enabled": "Trial enabled",
+        "tier": "Trial tier",
+        "ipLimit": "Trials per IP per day",
+        "deviceLimit": "Trials per device per day"
+      },
+      "rate": {
+        "title": "Rate limits",
+        "body": "Requests per window."
+      },
+      "manual": {
+        "title": "Manual payment (Myanmar)",
+        "body": "Accounts shown to customers who pay by transfer, and where they send the proof.",
+        "provider": "Provider",
+        "accountName": "Account name",
+        "accountNumber": "Account number",
+        "note": "Note",
+        "remove": "Remove",
+        "add": "Add account",
+        "instructions": "Instructions",
+        "expiry": "Order expiry (hours)",
+        "social": "Social links",
+        "socialName": "Network",
+        "socialUrl": "URL for {name}"
+      },
+      "advanced": {
+        "title": "All settings (JSON)",
+        "body": "Daily caps, banned words, limits and constants. Only known keys are accepted.",
+        "save": "Save JSON"
+      },
+      "changeNote": "Change note",
+      "defaultNote": "Settings updated in admin",
+      "save": "Save settings",
+      "saved": "Settings saved"
+    },
+    "countries": {
+      "title": "Countries",
+      "description": "Languages, language groups, culture, calendar, demographics and payment methods. Draft → sandbox → publish.",
+      "new": "New country",
+      "code": "Code (ISO 2)",
+      "currency": "Currency (ISO 3)",
+      "name": "Name",
+      "methodCard": "Card",
+      "methodManual": "Manual transfer",
+      "active": "Active",
+      "inactive": "Inactive",
+      "editingDraft": "Editing the draft version.",
+      "editingPublished": "Saving creates a new draft from this version.",
+      "languageGroups": "Language groups",
+      "data": "Country data"
+    },
+    "categories": {
+      "title": "Categories",
+      "description": "Questions, traits, activation rules, blockers, trust signals, topics, goals, analyzer hints and benchmarks.",
+      "new": "New category",
+      "draftAi": "Draft with AI",
+      "aiBody": "Generates a full draft template from a category name. Review before publishing.",
+      "aiDone": "Draft created",
+      "generate": "Generate draft",
+      "name": "Name",
+      "code": "Code",
+      "codeHelp": "Lowercase letters and underscores; derived from the name when empty.",
+      "parent": "Parent code",
+      "hints": "Hints for the AI",
+      "noPublished": "no published version",
+      "questionCount": "{count} questions",
+      "partsHint": "Edit all parts as one JSON document or one part at a time.",
+      "allParts": "All",
+      "previewForm": "Preview profile form",
+      "previewTitle": "Profile form: {name}",
+      "previewBody": "How the questions render for a business owner."
+    },
+    "platforms": {
+      "title": "Platforms",
+      "description": "Status, placements, ad specs, behaviour values and per-country benchmarks. Every save creates a new version.",
+      "name": "Name",
+      "statusLabel": "Status",
+      "status": {
+        "full": "Full",
+        "beta": "Beta",
+        "planned": "Planned"
+      },
+      "active": "Active",
+      "inactive": "Inactive",
+      "saveNote": "Saving creates a new draft version; publish it from the history.",
+      "sources": "Sources",
+      "global": "Global",
+      "markets": "Markets",
+      "save": "Save new version",
+      "saved": "Version saved"
+    },
+    "scenarios": {
+      "title": "Scenarios",
+      "description": "Modifiers, country and category filters, dates, weight and active flag.",
+      "new": "New scenario",
+      "code": "Code",
+      "name": "Name",
+      "weight": "Weight",
+      "active": "Active",
+      "inactive": "Inactive",
+      "countries": "Countries",
+      "categories": "Categories",
+      "listHelp": "Comma-separated; empty means all.",
+      "modifiers": "Modifiers",
+      "dateRules": "Date rules",
+      "noPublished": "no published version"
+    },
+    "weights": {
+      "title": "Weights",
+      "description": "Behaviour weights and score weights per goal.",
+      "behavior": "Behaviour weights",
+      "behaviorBody": "Current version {version}.",
+      "scoreFor": "Score weights: {goal}",
+      "sum": "Sum {total}",
+      "publishNow": "Publish immediately"
+    },
+    "fx": {
+      "title": "Exchange rates",
+      "description": "Rate per USD for local price display and manual orders.",
+      "add": "Add currency",
+      "currency": "Currency",
+      "rate": "Rate per USD",
+      "rateFor": "Rate for {currency}",
+      "date": "Effective date",
+      "note": "Note",
+      "updated": "Updated",
+      "new": "new",
+      "remove": "Remove",
+      "hint": "Example: MMK 3500 means $1 = 3,500 MMK.",
+      "save": "Save rates",
+      "saved": "Rates saved"
+    }
+  }
+}

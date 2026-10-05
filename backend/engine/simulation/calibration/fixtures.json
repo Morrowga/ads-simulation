@@ -1,0 +1,15 @@
+[
+  {"name": "blank_bad",        "expect": "low",  "ad": {"hook_strength": 0.05, "visual_quality": 0.10, "clarity": 0.10, "offer_visible_at_s": 12.0}},
+  {"name": "boring_stock",     "expect": "low",  "ad": {"hook_strength": 0.15, "visual_quality": 0.35, "clarity": 0.30, "offer_visible_at_s": 10.0}},
+  {"name": "unclear_pretty",   "expect": "low",  "ad": {"hook_strength": 0.20, "visual_quality": 0.80, "clarity": 0.15, "offer_visible_at_s": 11.0}},
+  {"name": "weak_hook_clear",  "expect": "mid",  "ad": {"hook_strength": 0.25, "visual_quality": 0.55, "clarity": 0.70, "offer_visible_at_s": 6.0}},
+  {"name": "average",          "expect": "mid",  "ad": {"hook_strength": 0.45, "visual_quality": 0.55, "clarity": 0.55, "offer_visible_at_s": 4.0}},
+  {"name": "good_not_great",   "expect": "mid",  "ad": {"hook_strength": 0.60, "visual_quality": 0.65, "clarity": 0.65, "offer_visible_at_s": 3.0}},
+  {"name": "strong_image",     "expect": "high", "ad": {"hook_strength": 0.85, "visual_quality": 0.85, "clarity": 0.85, "offer_visible_at_s": 1.0}},
+  {"name": "strong_all",       "expect": "high", "ad": {"hook_strength": 0.92, "visual_quality": 0.90, "clarity": 0.90, "offer_visible_at_s": 0.5}},
+  {"name": "video_slow_start", "expect": "mid",  "ad": {"duration_s": 20.0, "hook_strength": 0.30, "visual_quality": 0.60, "clarity": 0.60, "offer_visible_at_s": 12.0, "sound_reliance": 0.7}},
+  {"name": "video_strong",     "expect": "high", "ad": {"duration_s": 15.0, "hook_strength": 0.88, "visual_quality": 0.85, "clarity": 0.85, "offer_visible_at_s": 2.0, "sound_reliance": 0.3}},
+  {"name": "generic_poster",  "expect": "mid",  "ad": {"hook_strength": 0.72, "visual_quality": 0.84, "clarity": 0.86, "offer_visible_at_s": 1.0, "novelty": 0.15, "genericness": 0.85}},
+  {"name": "real_menu_poster", "expect": "low", "ad": {"hook_strength": 0.25, "novelty": 0.15, "genericness": 0.8, "visual_quality": 0.65, "caption_strength": 0.1, "clarity": 0.7}},
+  {"name": "fresh_surprising", "expect": "high", "ad": {"hook_strength": 0.72, "visual_quality": 0.84, "clarity": 0.86, "offer_visible_at_s": 1.0, "novelty": 0.85, "genericness": 0.15}}
+]

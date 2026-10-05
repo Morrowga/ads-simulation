@@ -1,0 +1,120 @@
+# Cafe & drinks category template. Published as version 2 by scripts/seed.py.
+code: cafe_drinks
+name: Cafe & drinks
+parent_code: restaurant
+tags: [food, cafe, coffee, drinks]
+version: 2
+change_note: "Reorder basics under price level; customer_mix multiselect; add mixed/global language option"
+questions:
+  - { key: business_name, label: "Business name", type: text, required: true }
+  - key: drink_type
+    label: "Main drinks"
+    type: multiselect
+    required: true
+    options: [coffee, tea, bubble_tea, smoothies, juice, matcha, cocktails, desserts]
+  - { key: what_you_sell, label: "What do you sell? (short description)", type: text, required: true }
+  - key: price_level
+    label: "Price level"
+    type: select
+    required: true
+    options: [budget, mid, premium]
+    feeds_trait: price_level
+  - key: vibe
+    label: "Vibe"
+    type: select
+    required: false
+    options: [work_friendly, instagrammable, quick_takeaway, cozy, minimalist]
+  - { key: delivery, label: "Do you deliver?", type: boolean, required: false, default: false }
+  - key: taste_profile
+    label: "Taste profile"
+    type: sliders
+    required: true
+    options: [sweet, bitter, creamy, adventurousness]
+    min: 0
+    max: 1
+    default: { sweet: 0.5, bitter: 0.4, creamy: 0.5, adventurousness: 0.4 }
+    feeds_trait: taste
+    help: "0 = none, 1 = very strong"
+  - key: customer_mix
+    label: "Who are your customers?"
+    type: multiselect
+    required: true
+    options: [locals_mostly, students, office_workers, mixed_tourists, families]
+    feeds_trait: familiarity
+    help: "Your actual, existing customers today (not who you want this ad to reach). Pick all that apply."
+  - key: customer_languages
+    label: "Languages your customers use"
+    type: multiselect
+    required: false
+    options: [th, en, my, zh, ja, ko, es, mixed]
+    feeds_trait: language_group
+    help: "The languages your existing customers speak today (not the ad's target audience). Pick 'Mixed' if you get a broad international mix."
+  - { key: followers, label: "Followers on your page (this platform)", type: number, required: true, min: 0, max: 50000000, default: 0, feeds_trait: brand_relationship, help: "Your current follower count on the platform you're testing on, e.g. Facebook/Instagram page followers." }
+  - { key: review_count, label: "Number of public reviews", type: number, required: false, min: 0, max: 1000000, default: 0, feeds_trait: brand_relationship }
+  - { key: rating, label: "Average rating (1-5)", type: number, required: false, min: 1, max: 5, feeds_trait: brand_relationship }
+  - { key: months_in_business, label: "Months in business", type: number, required: false, min: 0, max: 1200, default: 0, feeds_trait: brand_relationship }
+trait_dimensions:
+  - key: taste
+    label: "Taste"
+    kind: vector
+    values: [sweet, bitter, creamy, adventurousness]
+    default_distribution:
+      sweet: { mean: 0.6, sd: 0.2 }
+      bitter: { mean: 0.4, sd: 0.2 }
+      creamy: { mean: 0.55, sd: 0.2 }
+      adventurousness: { mean: 0.5, sd: 0.22 }
+    familiarity_shift: { grew_up_with_it: 0.05, tried_elsewhere: 0.0, foreigner_likes_it: 0.0, never_tried: -0.1 }
+  - key: dietary
+    label: "Dietary needs"
+    kind: categorical
+    values: [none, lactose_free, vegan, sugar_free]
+    default_distribution: { none: 0.8, lactose_free: 0.08, vegan: 0.04, sugar_free: 0.08 }
+  - key: familiarity
+    label: "Familiarity with the drink style"
+    kind: categorical
+    values: [grew_up_with_it, tried_elsewhere, foreigner_likes_it, never_tried]
+    from_question: customer_mix
+  - key: brand_relationship
+    label: "Brand relationship"
+    kind: reputation
+    values: [unaware, aware_not_tried, tried_liked, tried_disliked, regular]
+activation_rules:
+  - { ad_feature: "taste_profile.sweet", trait: "taste.sweet", weight: 0.7 }
+  - { ad_feature: "visual_quality", trait: "openness", weight: 0.6 }
+  - { ad_feature: "price_shown", trait: "price_sensitivity", weight: 0.6 }
+  - { ad_feature: "discount_pct", trait: "price_sensitivity", weight: 0.8 }
+  - { ad_feature: "hook_strength", trait: "patience", weight: 0.9 }
+default_mixes:
+  locals_mostly: { grew_up_with_it: 0.7, tried_elsewhere: 0.22, foreigner_likes_it: 0.04, never_tried: 0.04 }
+  students: { grew_up_with_it: 0.65, tried_elsewhere: 0.28, foreigner_likes_it: 0.03, never_tried: 0.04 }
+  office_workers: { grew_up_with_it: 0.6, tried_elsewhere: 0.32, foreigner_likes_it: 0.05, never_tried: 0.03 }
+  mixed_tourists: { grew_up_with_it: 0.4, tried_elsewhere: 0.3, foreigner_likes_it: 0.2, never_tried: 0.1 }
+  families: { grew_up_with_it: 0.7, tried_elsewhere: 0.22, foreigner_likes_it: 0.04, never_tried: 0.04 }
+buying_behavior: { impulse_share: 0.7, planned_share: 0.3, repeat_rate: 0.5, price_sensitivity: 0.55, decision_time_h: 1, typical_basket_usd: 4 }
+blockers:
+  - { code: price, label: "Price", weight: 0.3 }
+  - { code: relevance, label: "Not my taste", weight: 0.25 }
+  - { code: shipping, label: "Too far", weight: 0.3 }
+  - { code: trust, label: "Not convinced", weight: 0.1 }
+  - { code: size, label: "Cup size / quantity", weight: 0.05 }
+trust_signals:
+  - { code: photos_of_real_food, label: "Photos of real drinks", weight: 0.8 }
+  - { code: reviews, label: "Reviews visible", weight: 0.7 }
+  - { code: location_shown, label: "Location shown", weight: 0.7 }
+  - { code: price_shown, label: "Price shown", weight: 0.75 }
+comment_topics: [price, product_detail, service, positive, negative, other]
+typical_goals: [awareness, engagement, messages, sales]
+analyzer_hints:
+  look_for: [drink appearance, cup, latte art, price, promotion, interior, location, opening hours]
+  taste_dimensions: [sweet, bitter, creamy, adventurousness]
+  interest_tags: [food, cafe, coffee, drinks]
+benchmark_adjustments: { engagement_rate: 1.3, save_rate: 1.4, ctr: 1.0, message_rate: 1.2 }
+calendar:
+  peaks:
+    - { name: morning, hours: [7, 8, 9, 10], boost: 1.3 }
+    - { name: afternoon, hours: [14, 15, 16], boost: 1.2 }
+restrictions:
+  alcohol: "Cocktail promotion is restricted in several markets; check local advertising rules."
+country_overrides:
+  MM:
+    benchmark_adjustments: { message_rate: 1.8 }

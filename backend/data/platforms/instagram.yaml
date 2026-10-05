@@ -1,0 +1,72 @@
+# Instagram — platform settings version 1 (seed). Every value carries a source label.
+# official_spec values: VERIFY against Meta's current official ad specs before launch
+# (https://www.facebook.com/business/ads-guide) — specs change regularly.
+platform: instagram
+name: Instagram
+status: full
+version: 1
+change_note: "Initial seed"
+global:
+  placements:
+    feed:
+      formats: [image, video]
+      ratios: ["1:1", "4:5"]
+      video_s: [1, 60]
+      max_caption_chars: 125
+      source: official_spec        # VERIFY against current official ad specs
+    stories:
+      formats: [image, video]
+      ratios: ["9:16"]
+      video_s: [1, 60]
+      max_caption_chars: 125
+      source: official_spec        # VERIFY against current official ad specs
+    reels:
+      formats: [video]
+      ratios: ["9:16"]
+      video_s: [3, 90]
+      max_caption_chars: 72
+      source: official_spec        # VERIFY against current official ad specs
+    explore:
+      formats: [image, video]
+      ratios: ["1:1", "4:5"]
+      video_s: [1, 60]
+      max_caption_chars: 125
+      source: official_spec        # VERIFY against current official ad specs
+  behavior:
+    autoplay: true                 # source: official_spec
+    sound_default: "off"           # source: official_spec
+    avg_seconds_per_post: 1.4      # source: estimate_calibrate
+    hook_window_s: 2.5             # source: estimate_calibrate
+    fatigue_rate: 0.4              # source: estimate_calibrate
+    frequency_cap_per_day: 3       # source: estimate_calibrate
+    sponsored_penalty: 0.2         # source: estimate_calibrate
+    caption_visibility: 0.6        # source: estimate_calibrate (caption is below the image, often truncated)
+    sessions_per_day: 8            # source: estimate_calibrate
+  organic:
+    reach_rate_of_followers: 0.09  # source: estimate_calibrate
+    decay_half_life_h: 6           # source: estimate_calibrate
+    share_boost: 0.3               # source: estimate_calibrate
+    ranking_engagement_weight: 0.7 # source: estimate_calibrate
+  actions: [like, comment, share, save, click, message]
+  supported_goals:
+    paid: [sales, messages, traffic, awareness, engagement]
+    boosted: [messages, traffic, awareness, engagement]
+    organic: [awareness, engagement, messages]
+markets:
+  TH:
+    user_share_by_age: { "13-17": 0.7, "18-24": 0.85, "25-34": 0.8, "35-44": 0.62, "45-54": 0.42, "55-64": 0.25, "65+": 0.1 }   # source: estimate_calibrate
+    peak_hours: [0.35, 0.2, 0.1, 0.06, 0.05, 0.08, 0.25, 0.5, 0.6, 0.55, 0.5, 0.65, 0.8, 0.65, 0.55, 0.6, 0.7, 0.85, 0.95, 1.0, 1.0, 0.95, 0.8, 0.55]   # source: estimate_calibrate
+    benchmarks: { stop_rate: 0.12, ctr: 0.008, cvr: 0.02, cpm_usd: 2.2, comment_rate: 0.004, share_rate: 0.004, save_rate: 0.008, message_rate: 0.006, react_rate: 0.045, engagement_rate: 0.06 }   # source: industry_benchmark
+  MM:
+    user_share_by_age: { "13-17": 0.4, "18-24": 0.55, "25-34": 0.45, "35-44": 0.3, "45-54": 0.15, "55-64": 0.08, "65+": 0.03 }   # source: estimate_calibrate
+    peak_hours: [0.3, 0.15, 0.08, 0.05, 0.05, 0.1, 0.3, 0.5, 0.55, 0.5, 0.45, 0.6, 0.75, 0.6, 0.5, 0.55, 0.65, 0.8, 0.95, 1.0, 1.0, 0.9, 0.7, 0.5]   # source: estimate_calibrate
+    benchmarks: { stop_rate: 0.13, ctr: 0.009, cvr: 0.015, cpm_usd: 0.8, comment_rate: 0.005, share_rate: 0.004, save_rate: 0.006, message_rate: 0.009, react_rate: 0.05, engagement_rate: 0.065 }   # source: estimate_calibrate
+  US:
+    user_share_by_age: { "13-17": 0.65, "18-24": 0.78, "25-34": 0.7, "35-44": 0.55, "45-54": 0.4, "55-64": 0.28, "65+": 0.15 }   # source: public_report
+    peak_hours: [0.25, 0.12, 0.06, 0.05, 0.06, 0.12, 0.3, 0.5, 0.55, 0.5, 0.5, 0.62, 0.75, 0.62, 0.55, 0.58, 0.65, 0.78, 0.9, 1.0, 1.0, 0.92, 0.72, 0.45]   # source: estimate_calibrate
+    benchmarks: { stop_rate: 0.1, ctr: 0.007, cvr: 0.022, cpm_usd: 8.5, comment_rate: 0.002, share_rate: 0.002, save_rate: 0.006, message_rate: 0.003, react_rate: 0.03, engagement_rate: 0.04 }   # source: industry_benchmark
+sources:
+  placements: official_spec
+  behavior: estimate_calibrate
+  organic: estimate_calibrate
+  markets: public_report / estimate_calibrate / industry_benchmark

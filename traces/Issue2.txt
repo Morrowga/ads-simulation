@@ -1,0 +1,12 @@
+**Issue 2 — Ad Preview / Checkout Flow**
+
+1. Phone mock-up frame (Preview wizard step): fixed content overflowing past the bottom edge of the frame — `MediaBox` was sizing itself by aspect ratio instead of the frame's real container height; added a `fill` mode.
+2. Applied the same overflow fix to Instagram Reels and TikTok full-screen previews (same root cause).
+3. Removed duplicate outer bezel/background wrappers from Facebook, Instagram, and TikTok preview components — `PhoneFrame` now owns the frame/background/scroll.
+4. Scaled down Facebook feed preview fonts/icons/padding to fit the phone-frame width.
+5. Fixed story progress bar overlapping the phone's notch/camera cutout (increased notch clearance).
+6. Increased phone frame + inner content width without changing frame height.
+7. Wizard step indicator changed from horizontal row to a vertical sidebar (left side), with content placed next to it.
+8. Wizard bottom action bar (Back / Save & exit / Next) made fixed — page no longer scrolls past it; only step content scrolls.
+9. Confirm page: checkbox + "Continue to checkout" card made fixed at the bottom; only the summary/checks list scrolls.
+10. Checkout page: "Review inputs" changed from a small, easy-to-miss text link to a visible button placed next to the Pay/Run button on all three payment paths (trial, card, manual).

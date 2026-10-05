@@ -1,0 +1,34 @@
+# --- secrets (never commit) ---
+.env
+backend/.env
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+!.env.example
+!backend/.env.example
+!frontend/.env.example
+
+# --- backend (python) ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- frontend (next.js) ---
+node_modules/
+frontend/.next/
+frontend/out/
+*.tsbuildinfo
+npm-debug.log*
+
+# --- local backups from our patch steps ---
+backend.bak*/
+frontend.bak*/
+
+# --- os / editor ---
+.DS_Store
+.idea/
+.vscode/

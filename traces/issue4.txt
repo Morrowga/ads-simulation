@@ -1,0 +1,41 @@
+**Issue 4 — Honest Scoring, Reference-Ad Scoring, Benchmark Anchoring, Stable Analyzer & Progress List Fix**
+
+**Frontend**
+
+1. Dashboard test list: a running or queued test no longer stays stuck at an old progress value (15%, 51%, 55%). `useTests` in `lib/queries.ts` now refetches every 3 seconds while any test is queued or running, stops when none are, and refetches every time the dashboard mounts. The global 15-second `staleTime` and the disabled refetch on window focus no longer leave the list stale. While developing, run `npm run dev`, because `npm run start` serves the last build and made the fix look like it had failed.
+2. Progress page (`lib/sse.ts`): polling fallback every 3 seconds and a reducer that never lowers the percentage or undoes a completed state. Prepared, not applied yet. Apply it only if the progress page sticks again.
+
+**Backend**
+
+1. Calibration harness: new `engine/simulation/calibration/` package (`run_calibration.py`, `sweep.py`, `trials.py`, `fixtures.json` with 12 fixture ads from blank to strong, plus generic poster and fresh and surprising), and `tests/test_calibration.py`. It measures the score spread and which weights drive it. `run_calibration.py` now scores like the live pipeline: each fixture ad gets its reference ad and its own anchoring offsets, and the table shows the reference buy rate. Fixture results at 2000 agents: low ads average 29.2, mid 53.5, high 74.5, spread 45.3 (target 30 or more), and the average ad scores 50.1.
+2. New ad features: `AdFeatures` in `types.py` gained `novelty` and `genericness` and an `attention_pull` value. `crowd_brain.py` (stop decision) and `reaction/priors.py` (heuristic attention) use it instead of hook alone, so generic ads lose attention and fresh ones gain it.
+3. Clarity: a clarity-gap term now lowers stop, click and buy for confusing ads (`crowd_brain.py`).
+4. Weight trials comparable: the blocker random draw is always taken (`r_block`), so the random stream no longer depends on who bought.
+5. Score curve: `norm()` in `results/scoring.py` is now `1 - 2^(-x/benchmark)`. It is 0.5 on benchmark, 0.75 at 2x, and never clips, so strong ads no longer saturate.
+6. Weights v2 (`data/behavior_weights.yaml`): recalibrated stop and buy intercepts, new clarity weights, hook weight lowered. An average ad now lands near its benchmark. Seeded as a new weight set.
+7. Analyzer prompt v1.2 (`llm/prompts/ad_analysis.md`, `llm/schemas.py`, `llm/tasks.py`, `llm/mock_provider.py`): strict rubric (an average ad is 0.5, 0.85 and above is rare, a price list is not a hook, a one-word caption is capped at 0.1), new fields `first_glance`, `generic_signals`, `novelty`, `genericness`, and guards that cap hook for generic ads and cap caption strength for one-word captions.
+8. Reference-ad scoring (`engine/simulation/pipeline.py`, `app/workers/run_test.py`): each run is also simulated with an average-creative version of the same ad (same audience, seed and scenario), and the score is measured against that reference instead of absolute benchmarks. Audience warmth, culture and offer context no longer inflate scores. The menu poster went from 84.2 to 41.1. Reference rates are stored in each run's metrics (`reference`).
+9. Benchmark anchoring (`pipeline.py`, `behavior/crowd_brain.py`, `runtime/montecarlo.py`, `run_test.py`): before the real simulation, `calibrate_bias` runs the reference ad on the same audience with 3 fixed seeds and finds a logit offset for each of stop, click, message, buy and react, so the reference ad lands on the market benchmark. It uses 8 iterations, closing 60% of the gap each time (`CAL_ITERS = 8`, `CAL_DAMP = 0.6`). The five offsets are added to the decision logits (`bias_*` fields in `StepContext`, a `bias` parameter in `simulate_run`) for the ad and the reference alike, so the comparison stays fair. The offsets are saved in each run's metrics as `calibration_bias`. The effective benchmarks are layered (country, platform market, category), so they differ from the raw `MM.yaml` values (message target is 0.028, engagement 0.0715). Result: the reference buy rate went from 3.7 times the benchmark to on target, PUBG's CTR went from 0.056 to 0.023, and its buy rate from 0.016 to 0.0038. The final calibration rates match the targets to within about 2–3%. At small populations (2000 agents) rare events like purchases are noisy, so the harness table is for ordering only.
+10. Analyzer sampling (`app/llm/tasks.py`): each ad is analyzed three times and every numeric feature takes its median (`ANALYZE_SAMPLES`, default 3, `merge_feature_samples`); text and list fields come from the sample closest to the medians. If one of the three calls fails, the other two are used. The same menu poster used to score 28.3 to 37.6 between runs because the analyzer returned different clarity, hook and caption values each time. After the change three runs scored 36.2, 38.9 and 37.1. Cost is three model calls per analysis.
+11. Stored analyzer fields (`tasks.py`, `features_from_analysis`): `generic_signals` and `first_glance` are now saved in `ad_analyses.features`. They were returned by the model but dropped before saving. `AdFeatures.from_dict` ignores extra keys, so scores are unaffected.
+12. `ENGINE_VERSION` is now 3.2.0 in `app/config.py`, `tests/conftest.py` and `.env`, so the ad fingerprint changes with the scoring (3.0.0 reference scoring, 3.1.0 anchoring, 3.1.1 damped calibration, 3.2.0 analyzer sampling). The `.env` line had stray text after the version, which broke confirming a test (value too long for the `engine_version` column).
+13. Debug output: the temporary `CAL` print in `calibrate_bias` is now a `log.debug` call (logger added in `pipeline.py`), so it no longer floods the worker log or the harness output and can be switched back on through the log level.
+14. Tests: fixed stale fixtures and assertions (`customer_mix` as a list, weights version 2, LLM call count). Full suite: 47 passed, 2 xpassed on the latest code.
+
+**Results across the tested ads (engine 3.2.0)**
+
+- PUBG: 68.5–69.8
+- Car rental: 42.3
+- Menu poster: 36.2–38.9 (28.3 to 37.6 before the analyzer sampling)
+- Blank or terrible ad: 27–29
+
+Order and spread are right: a bad ad is under 30, generic ads are around 36–42, a strong ad is near 70. The old engine gave a generic poster 84–96.
+
+**Still open**
+
+- Restart the worker once (`docker compose up -d --force-recreate api worker`) so new tests save `generic_signals` and `first_glance`.
+- Optional: an analysis cache keyed by image, caption, prompt version and model (needs a new column and a migration). The `real_menu_poster` harness fixture is also optional and wasn't confirmed as added.
+- Deferred: payment screen bug, real Stripe keys before launch, cleanup (`backend.bak.*` folders, `.gitignore`, `git init`), and the progress-page fix.
+- Next: the UI score colours (`lib/format.ts` and `score-badge.tsx`, set for the real 22–75 range) and the report rework, with plain-language wording and an Overview that follows the test's goal.
+
+The same log can be turned into a Word document if you want it. To start the frontend part, I'm waiting on the attachments I listed: `lib/format.ts`, `score-badge.tsx`, `report/page.tsx`, `report/sections.tsx`, `evidence-popover.tsx`, the output of `grep -rn "class ReportOut" -A40 backend/app | head -70`, and a screenshot of each report tab.

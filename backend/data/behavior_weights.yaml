@@ -1,0 +1,85 @@
+# Crowd brain weights. Version 2 is the first calibrated set (see change_note).
+# Published as a weight set by scripts/seed.py: the seed inserts a version only if that number is new,
+# so to change any value, copy this file's values into a NEW version number instead of editing in place.
+# Values are still estimates (source: estimate_calibrate) until real campaign results are available.
+version: 2
+change_note: "Calibrated so an average ad lands on platform benchmarks (stop, CTR, buy rate); hook counted once; clarity gate added"
+behavior:
+  # attention (stop scrolling)
+  b0_stop: -2.7
+  w_hook: 0.8
+  w_patience_impact: 0.6
+  w_brand: 0.9
+  w_taste: 0.8
+  w_prior: 1.0
+  w_int: 0.7
+  w_fatigue: 0.45
+  w_mood: 0.4
+  w_hour: 0.3
+  w_caption: 0.5
+  w_sponsored: 0.8
+  w_sound: 0.4
+  w_visual: 0.6
+  w_tone: 0.4
+  w_clarity_stop: 1.0
+  # reactions
+  b0_react: -1.9
+  w_react_sent: 1.6
+  w_react_social: 0.8
+  w_react_prior: 0.8
+  # comments
+  b0_comment: -5.0
+  w_comment_social: 1.5
+  w_comment_sent_abs: 0.8
+  w_comment_anger: 0.6
+  w_comment_prior: 1.2
+  # shares / saves
+  b0_share: -4.8
+  w_share_social: 1.6
+  w_share_sent: 1.0
+  w_share_prior: 1.0
+  b0_save: -4.4
+  w_save_openness: 0.8
+  w_save_sent: 0.6
+  # clicks
+  b0_click: -3.9
+  w_click_offer: 1.2
+  w_click_prior: 1.4
+  w_click_cta: 0.6
+  w_click_impulse: 0.8
+  w_click_brand: 0.6
+  w_click_competition: 0.5
+  w_click_caption: 0.5
+  w_click_clarity: 2.0
+  # messages (chat started)
+  b0_message: -5.4
+  w_message_cta: 1.8
+  w_message_social: 0.9
+  w_message_prior: 1.2
+  # purchases
+  b0_buy: -1.6
+  w_buy_price: 1.4
+  w_buy_trust: 1.2
+  w_buy_impulse: 0.9
+  w_buy_brand: 0.9
+  w_buy_boost: 1.0
+  w_buy_discount: 0.8
+  w_buy_prior: 1.0
+  w_buy_blocker: 0.8
+  w_buy_clarity: 1.5
+  # brand relationship effect on attention/clicks/buys
+  brand_effect_unaware: -0.35
+  brand_effect_aware_not_tried: 0.0
+  brand_effect_tried_liked: 0.4
+  brand_effect_tried_disliked: -0.6
+  brand_effect_regular: 0.8
+  # watch-time model
+  watch_patience: 0.6
+  watch_attention: 0.5
+  image_dwell_s: 2.5
+score_by_goal:
+  sales: { stop_rate: 0.20, ctr: 0.25, goal_rate: 0.40, sentiment: 0.15 }
+  messages: { stop_rate: 0.20, ctr: 0.15, goal_rate: 0.45, sentiment: 0.20 }
+  traffic: { stop_rate: 0.25, goal_rate: 0.55, sentiment: 0.20 }
+  awareness: { stop_rate: 0.50, reach_rate: 0.30, sentiment: 0.20 }
+  engagement: { stop_rate: 0.20, goal_rate: 0.55, sentiment: 0.25 }

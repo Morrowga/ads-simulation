@@ -1,0 +1,79 @@
+{
+  "test": {
+    "id": "sample-test-0001",
+    "title": "Grilled seafood weekend promo",
+    "country_code": "TH",
+    "tier_code": "standard",
+    "post_type": "paid",
+    "goal": "messages",
+    "budget_usd": 60.0,
+    "currency": "USD",
+    "schedule": { "start_date": "2026-10-03", "days": 3 },
+    "platforms": [
+      { "code": "facebook", "placements": ["feed", "stories"], "budget_share": 60 },
+      { "code": "tiktok", "placements": ["in_feed"], "budget_share": 40 }
+    ],
+    "audiences": [
+      {
+        "name": "Locals near the shop",
+        "kind": "targeted",
+        "targeting": { "age_min": 18, "age_max": 45, "genders": ["f", "m", "other"], "interests": ["food"], "location": "Bangkok, Bang Na", "radius_km": 8, "audience_size": 180000 }
+      }
+    ],
+    "ad_copy": {
+      "caption": "สุดสัปดาห์นี้ ซีฟู้ดย่างเตาถ่าน ลด 20% ทักแชทจองโต๊ะได้เลย",
+      "headline": "Charcoal-grilled seafood, 20% off this weekend",
+      "cta": "send_message",
+      "link_url": null
+    }
+  },
+  "profile": {
+    "category_code": "restaurant",
+    "data": {
+      "business_name": "Pla Pao Bang Na",
+      "cuisine": "thai",
+      "what_you_sell": "charcoal-grilled seafood and isan dishes",
+      "signature_dishes": "salt-crusted grilled fish, grilled prawns, som tam",
+      "price_level": "mid",
+      "taste_profile": { "spice": 0.7, "sweet": 0.3, "sour": 0.6, "adventurousness": 0.5 },
+      "dietary_options": ["none"],
+      "customer_mix": "locals_mostly",
+      "customer_languages": ["th", "en"],
+      "followers": 1800,
+      "review_count": 140,
+      "rating": 4.4,
+      "months_in_business": 30,
+      "location_type": "street",
+      "delivery": true
+    }
+  },
+  "ad_features": {
+    "hook_strength": 0.62,
+    "offer_visible_at_s": 2.5,
+    "duration_s": 12.0,
+    "is_video": true,
+    "key_moments": [
+      { "t": 0.0, "label": "fish on the grill, smoke" },
+      { "t": 2.5, "label": "20% off text appears" },
+      { "t": 7.0, "label": "prawns close-up" },
+      { "t": 10.0, "label": "message us to book" }
+    ],
+    "category": "food",
+    "on_screen_text": "ลด 20% เสาร์-อาทิตย์นี้",
+    "sound_reliance": 0.3,
+    "price_shown": false,
+    "price_level": 0.5,
+    "discount_pct": 20,
+    "trust_signals": ["photos_of_real_food", "location_shown"],
+    "cta": "send_message",
+    "caption_language": "th",
+    "caption_strength": 0.6,
+    "caption_english": "This weekend: charcoal-grilled seafood 20% off, message us to book a table",
+    "taste_profile": { "spice": 0.7, "sweet": 0.3, "sour": 0.6, "adventurousness": 0.5 },
+    "interest_tags": ["food", "dining", "restaurant"],
+    "description": "A 12-second video of a salt-crusted fish on a charcoal grill, smoke rising, then grilled prawns; a Thai text overlay announces 20% off this weekend and the last frame asks viewers to message to book a table.",
+    "visual_quality": 0.7,
+    "clarity": 0.65,
+    "emotional_tone": "warm"
+  }
+}
